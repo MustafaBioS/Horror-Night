@@ -1,0 +1,10 @@
+~ start
+set State.in_dial = true
+set State.first_dial_done = true
+
+You: My wife's phone signal led me here... this old house.
+You: Gosh it's so dark here.
+You: Please, let her be okay.
+
+set State.in_dial = false
+=> END

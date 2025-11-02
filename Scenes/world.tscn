@@ -1,11 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://btxogjgmos46u"]
+[gd_scene load_steps=30 format=3 uid="uid://btxogjgmos46u"]
 
 [ext_resource type="PackedScene" uid="uid://dx0vp5fbe4rv5" path="res://Scenes/player.tscn" id="1_5a7ea"]
 [ext_resource type="Texture2D" uid="uid://ddk537nxfw3q0" path="res://Assets/Walls/WoodFloor040_1K-JPG_Color.jpg" id="1_go701"]
 [ext_resource type="Texture2D" uid="uid://fq8w3o2sm1ug" path="res://Assets/Stone/PavingStones111_2K-JPG_Color.jpg" id="2_5a7ea"]
 [ext_resource type="ArrayMesh" uid="uid://qc4pb0d1r07" path="res://Assets/grass.res" id="3_8j60k"]
 [ext_resource type="PackedScene" uid="uid://d22pkyiq6s0kl" path="res://Scenes/trees.tscn" id="5_fo5ed"]
+[ext_resource type="Script" uid="uid://cgaiexvb5b2pu" path="res://Scripts/door.gd" id="5_k7acu"]
 [ext_resource type="PackedScene" uid="uid://b0foag087oohx" path="res://Scenes/fence.tscn" id="6_5ukr8"]
+[ext_resource type="PackedScene" uid="uid://bpk21fk44n6wb" path="res://Assets/wooden_doorFBX.fbx" id="6_o06y3"]
+[ext_resource type="Script" uid="uid://c8yx3kldkc0rl" path="res://Scripts/start.gd" id="9_5v1tr"]
+[ext_resource type="Resource" uid="uid://cx6o8wfo8ewbo" path="res://Dialogues/start.dialogue" id="10_0fj1v"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5a7ea"]
 albedo_color = Color(0.023442816, 0.3459306, 0, 1)
@@ -31,6 +35,131 @@ albedo_color = Color(0.87058824, 0.72156864, 0.5294118, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_5v1tr"]
 size = Vector3(2.054596, 13.651001, 1.5044498)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_o06y3"]
+size = Vector3(10.028015, 10.447357, 9.475708)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k7acu"]
+size = Vector3(10.094849, 10.374573, 2.0236816)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0fj1v"]
+radius = 0.77978516
+height = 14.532551
+
+[sub_resource type="Animation" id="Animation_0fj1v"]
+resource_name = "fall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Trees92:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.4434396, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Trees92:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-16.236475, 0.4037323, 100.390854), Vector3(-16.236475, 0.4037323, 96.30504)]
+}
+
+[sub_resource type="Animation" id="Animation_ikia7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Trees92:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Trees92:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-16.236475, 0.4037323, 100.390854)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Falling Tree2/Trees58:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Falling Tree2/Trees58:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-16.835617, 0, 77.420364)]
+}
+
+[sub_resource type="Animation" id="Animation_7yui6"]
+resource_name = "fall2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Falling Tree2/Trees58:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.358477, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Falling Tree2/Trees58:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-16.835617, 0, 77.420364), Vector3(-16.835617, 0, 79.315216)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c5t2i"]
+_data = {
+&"RESET": SubResource("Animation_ikia7"),
+&"fall": SubResource("Animation_0fj1v"),
+&"fall2": SubResource("Animation_7yui6")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7yui6"]
+size = Vector3(6.60643, 6.9970703, 13.362564)
+
 [sub_resource type="MultiMesh" id="MultiMesh_fo5ed"]
 transform_format = 1
 mesh = ExtResource("3_8j60k")
@@ -48,10 +177,16 @@ volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(0.627451, 0.627451, 0.627451, 1)
 volumetric_fog_anisotropy = 0.6
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_0fj1v"]
+size = Vector3(17.428467, 11.557831, 12.390381)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ikia7"]
+size = Vector3(14.610901, 6.1622314, 1.3496094)
+
 [node name="World" type="Node3D"]
 
 [node name="Ground" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.70238376, -0.0962677, 56.89125)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.67985415, -0.0962677, 56.846542)
 use_collision = true
 size = Vector3(250, 1, 250)
 material = SubResource("StandardMaterial3D_5a7ea")
@@ -215,10 +350,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.326262, 0, 97.49363)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.708202, 0, 88.873985)
 
 [node name="Trees20" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4839716, 0, 110.12053)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.223863, 0, 110.12053)
 
 [node name="Trees21" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4327507, 9.536743e-07, 73.42615)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.643367, 9.536743e-07, 73.42615)
 
 [node name="Trees22" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.428201, 0, 73.713394)
@@ -313,9 +448,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.31864, 0, 125.64824)
 [node name="Trees57" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.172444, 0, 119.35817)
 
-[node name="Trees58" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.714681, 0, 130.86092)
-
 [node name="Trees59" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.38525, 0, 127.03395)
 
@@ -367,62 +499,335 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.870663, 0, 100.096176)
 [node name="Trees75" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.901176, 0, 85.64967)
 
-[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="Ground"]
-multimesh = SubResource("MultiMesh_fo5ed")
+[node name="Trees38" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.194687, 0.4037342, 158.9368)
 
-[node name="Fence" type="Node3D" parent="Ground"]
+[node name="Trees39" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.863426, 0.4037323, 159.66605)
+
+[node name="Trees40" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.89724, 0.4037361, 158.66782)
+
+[node name="Trees41" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.04222, 0.4037323, 149.43538)
+
+[node name="Trees42" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.585236, 0.4037323, 140.6521)
+
+[node name="Trees76" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.32402, 0.4037342, 131.65298)
+
+[node name="Trees77" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.47513, 0.4037323, 124.675026)
+
+[node name="Trees78" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.14774, 0.4037304, 151.36566)
+
+[node name="Trees79" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.59537, 0.4037304, 140.9252)
+
+[node name="Trees80" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.57132, 0.4037342, 132.48473)
+
+[node name="Trees81" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.29131, 0.4037342, 158.8384)
+
+[node name="Trees82" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.965069, 0.4037342, 157.25491)
+
+[node name="Trees83" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.435055, 0.4037323, 164.16074)
+
+[node name="Trees84" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.271614, 0.4037304, 158.88956)
+
+[node name="Trees85" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.95716, 0.4037323, 154.11224)
+
+[node name="Trees86" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.164215, 0.4037323, 159.20593)
+
+[node name="Trees87" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.254608, 0.4037323, 161.78305)
+
+[node name="Trees88" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.765942, 0.4037323, 158.48508)
+
+[node name="Trees89" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.044191, 0.4037304, 158.29138)
+
+[node name="Trees90" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.068871, 0.4037304, 158.94362)
+
+[node name="Trees91" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5340424, 0.4037323, 157.35704)
+
+[node name="Trees93" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.690962, 0.4037342, 157.32492)
+
+[node name="Trees94" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.982475, 0.4037285, 157.50226)
+
+[node name="Trees95" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.398148, 0.4037361, 157.83032)
+
+[node name="Trees96" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.939976, 0.4037323, 156.01172)
+
+[node name="Trees97" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.43574, 0.4037285, 157.48155)
+
+[node name="Trees98" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.94332, 0.4037285, 157.80624)
+
+[node name="Trees99" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.230743, 0.4037285, 156.33534)
+
+[node name="Trees100" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.54181, 0.40372467, 130.3723)
+
+[node name="Trees101" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.34721, 0.4037285, 130.35522)
+
+[node name="Trees102" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.113556, 0.4037323, 139.35995)
+
+[node name="Trees103" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.216373, 0.4037285, 147.87372)
+
+[node name="Trees104" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.85259, 0.4037285, 138.21004)
+
+[node name="Trees105" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.27257, 0.4037323, 150.00533)
+
+[node name="Trees106" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.881256, 0.4037285, 160.83969)
+
+[node name="Trees107" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.357857, 0.4037361, 164.82066)
+
+[node name="Trees108" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.96305, 0.4037361, 165.17574)
+
+[node name="Trees109" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.514847, 0.4037323, 164.25903)
+
+[node name="Trees110" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.320057, 0.4037323, 164.31592)
+
+[node name="Trees111" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.160236, 0.4037323, 162.51245)
+
+[node name="Trees112" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.912943, 0.4037323, 163.24667)
+
+[node name="Trees113" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.598697, 0.4037361, 163.44855)
+
+[node name="Trees114" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.284313, 0.4037323, 164.75397)
+
+[node name="Trees115" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3763022, 0.4037285, 163.53499)
+
+[node name="Trees116" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.247278, 0.4037361, 166.20482)
+
+[node name="Trees117" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.789545, 0.4037361, 169.57645)
+
+[node name="Trees118" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.725288, 0.4037361, 166.62534)
+
+[node name="Trees119" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.210075, 0.4037323, 171.452)
+
+[node name="Trees120" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.004784, 0.4037323, 167.035)
+
+[node name="Trees121" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.00682, 0.4037361, 168.05423)
+
+[node name="Trees122" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.126915, 0.4037361, 168.37483)
+
+[node name="Trees123" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.275, 0.4037361, 166.41911)
+
+[node name="Trees124" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.30198, 0.4037361, 124.13431)
+
+[node name="Fence" type="Node3D" parent="Ground/NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.70238376, 0.0962677, -56.89125)
 
-[node name="Fence" parent="Ground/Fence" instance=ExtResource("6_5ukr8")]
+[node name="Fence" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.09105, 0.4037342, 164.96422)
 
-[node name="Fence2" parent="Ground/Fence" instance=ExtResource("6_5ukr8")]
+[node name="Fence2" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.64717, 0.4037342, 164.96422)
 
-[node name="Fence3" parent="Ground/Fence" instance=ExtResource("6_5ukr8")]
+[node name="Fence3" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.25276, 0.4037342, 164.96422)
 
-[node name="Fence4" parent="Ground/Fence" instance=ExtResource("6_5ukr8")]
+[node name="Fence4" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 51.797794, 0.4037342, 151.07549)
 
-[node name="Fence5" parent="Ground/Fence" instance=ExtResource("6_5ukr8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.09105, 0.4037342, 151.46227)
+[node name="Fence8" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.84082, 0.4037342, 164.96422)
 
-[node name="Fence6" parent="Ground/Fence" instance=ExtResource("6_5ukr8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.64717, 0.4037342, 151.46227)
+[node name="Fence9" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.396943, 0.4037342, 164.96422)
 
-[node name="Fence7" parent="Ground/Fence" instance=ExtResource("6_5ukr8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.25276, 0.4037342, 151.46227)
+[node name="Fence10" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.997466, 0.4037342, 164.96422)
 
-[node name="Trees" parent="Ground" instance=ExtResource("5_fo5ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.9001, 0.5000019, 102.064896)
+[node name="Fence11" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.486803, 0.4037342, 164.96422)
 
-[node name="Trees2" parent="Ground" instance=ExtResource("5_fo5ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.56884, 0.5, 102.79414)
+[node name="Fence12" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.930681, 0.4037342, 164.96422)
 
-[node name="Trees3" parent="Ground" instance=ExtResource("5_fo5ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.60265, 0.5000038, 101.79591)
+[node name="Fence13" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.32509, 0.4037342, 164.96422)
 
-[node name="Trees4" parent="Ground" instance=ExtResource("5_fo5ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.747635, 0.5, 92.56348)
+[node name="Fence14" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -43.887344, 0.4037342, 140.26395)
 
-[node name="Trees5" parent="Ground" instance=ExtResource("5_fo5ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.29065, 0.5, 83.7802)
+[node name="Fence15" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.09105, 0.4037342, 151.70403)
 
-[node name="Trees6" parent="Ground" instance=ExtResource("5_fo5ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.029434, 0.5000019, 74.78108)
+[node name="Fence16" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.64717, 0.4037342, 151.70403)
 
-[node name="Trees7" parent="Ground" instance=ExtResource("5_fo5ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.18054, 0.5, 67.80312)
+[node name="Fence17" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.25276, 0.4037342, 151.70403)
 
-[node name="Trees8" parent="Ground" instance=ExtResource("5_fo5ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.85316, 0.4999981, 94.49376)
+[node name="Fence18" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.84082, 0.4037342, 151.70403)
 
-[node name="Trees9" parent="Ground" instance=ExtResource("5_fo5ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.30078, 0.4999981, 84.0533)
+[node name="Fence19" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 10.595358, 0.4037342, 151.70403)
 
-[node name="Trees10" parent="Ground" instance=ExtResource("5_fo5ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.27673, 0.5000019, 75.61282)
+[node name="Fence20" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 1, -6.689613, 0.4037342, 151.70403)
+
+[node name="Fence21" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.486803, 0.4037342, 151.70403)
+
+[node name="Fence22" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.930681, 0.4037342, 151.70403)
+
+[node name="Fence23" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.32509, 0.4037342, 151.70403)
+
+[node name="Fence24" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.122051, 0.4037342, 126.92398)
+
+[node name="Fence25" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.122051, 0.4037342, 113.482376)
+
+[node name="Fence26" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.122051, 0.4037342, 100.182556)
+
+[node name="Fence27" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.122051, 0.4037342, 86.786095)
+
+[node name="Fence28" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.122051, 0.4037342, 73.38936)
+
+[node name="Fence29" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.122051, 0.4037342, 60.038963)
+
+[node name="Fence30" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.122051, 0.4037342, 46.67673)
+
+[node name="Fence31" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.122051, 0.4037342, 33.326336)
+
+[node name="Fence32" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(-1.35505305e-08, 0, 1, 0, 1, 0, -0.31, 0, -4.371139e-08, 17.122051, 0.4037342, 28.237967)
+
+[node name="Fence33" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.8996773, 0.4037342, 126.92398)
+
+[node name="Fence34" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.8996773, 0.4037342, 113.482376)
+
+[node name="Fence35" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.8996773, 0.4037342, 100.182556)
+
+[node name="Fence36" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.8996773, 0.4037342, 86.786095)
+
+[node name="Fence37" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.8996773, 0.4037342, 73.38936)
+
+[node name="Fence38" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.8996773, 0.4037342, 60.038963)
+
+[node name="Fence39" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.8996773, 0.4037342, 46.67673)
+
+[node name="Fence40" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.8996773, 0.4037342, 33.326336)
+
+[node name="Fence41" parent="Ground/NavigationRegion3D/Fence" instance=ExtResource("6_5ukr8")]
+transform = Transform3D(-1.35505305e-08, 0, 1, 0, 1, 0, -0.31, 0, -4.371139e-08, 6.8996773, 0.4037342, 28.237967)
+
+[node name="Door" type="StaticBody3D" parent="Ground/NavigationRegion3D"]
+script = ExtResource("5_k7acu")
+
+[node name="Door3D" parent="Ground/NavigationRegion3D/Door" instance=ExtResource("6_o06y3")]
+transform = Transform3D(6, 0, 0, 0, 5, 0, 0, 0, 5, 2.853188, 5.078388, -29.190851)
+
+[node name="Door3D2" parent="Ground/NavigationRegion3D/Door" instance=ExtResource("6_o06y3")]
+transform = Transform3D(-6, 0, -4.371139e-07, 0, 5, 0, 5.2453663e-07, 0, -5, -2.5000029, 5.078388, -29.435999)
+
+[node name="DoorEntry" type="Area3D" parent="Ground/NavigationRegion3D/Door"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/NavigationRegion3D/Door/DoorEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007598877, 4.7236786, -28.47888)
+shape = SubResource("BoxShape3D_o06y3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/NavigationRegion3D/Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.030578613, 4.6872864, -29.692436)
+shape = SubResource("BoxShape3D_k7acu")
+
+[node name="Falling Tree" type="RigidBody3D" parent="Ground/NavigationRegion3D"]
+
+[node name="Trees92" parent="Ground/NavigationRegion3D/Falling Tree" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -16.236475, 0.4037323, 100.390854)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/NavigationRegion3D/Falling Tree"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.234135, 4.722292, 100.35373)
+shape = SubResource("CapsuleShape3D_0fj1v")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Ground/NavigationRegion3D/Falling Tree"]
+libraries = {
+&"": SubResource("AnimationLibrary_c5t2i")
+}
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Ground/NavigationRegion3D/Falling Tree"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.170214, 2.9985352, 88.968796)
+shape = SubResource("BoxShape3D_7yui6")
+
+[node name="Falling Tree2" type="RigidBody3D" parent="Ground/NavigationRegion3D"]
+
+[node name="Trees58" parent="Ground/NavigationRegion3D/Falling Tree2" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1.2499999, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -16.835617, 0, 77.420364)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/NavigationRegion3D/Falling Tree2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.740875, 4.722292, 77.53203)
+shape = SubResource("CapsuleShape3D_0fj1v")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Ground/NavigationRegion3D/Falling Tree2"]
+libraries = {
+&"": SubResource("AnimationLibrary_c5t2i")
+}
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="Ground"]
+multimesh = SubResource("MultiMesh_fo5ed")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 21.743494, 15.937311, 145.74156)
@@ -443,17 +848,62 @@ environment = SubResource("Environment_fo5ed")
 [node name="Player" parent="." instance=ExtResource("1_5a7ea")]
 transform = Transform3D(-1.3113416e-07, 0, 3, 0, 3, 0, -3, 0, -1.3113416e-07, 55.576466, 3.3883953, 146.13443)
 
-[node name="Trees" parent="." instance=ExtResource("5_fo5ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.29434, 0.4037342, 158.85774)
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.99998915, -0.0046600252, 0, 0.0046600252, -0.99998915, 0, 12.502882, 0)
+light_energy = 24.2
+omni_range = 100.0
 
-[node name="Trees2" parent="." instance=ExtResource("5_fo5ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.968098, 0.4037342, 157.27426)
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.99998915, -0.0046600252, 0, 0.0046600252, -0.99998915, 0, 12.502882, 61.27283)
+light_energy = 24.2
+omni_range = 100.0
 
-[node name="Trees3" parent="." instance=ExtResource("5_fo5ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.438084, 0.4037323, 164.18008)
+[node name="Start Dialogue" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.11531, 0, 146.23549)
+script = ExtResource("9_5v1tr")
+dialogue_resource = ExtResource("10_0fj1v")
 
-[node name="Trees4" parent="." instance=ExtResource("5_fo5ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.27464, 0.4037304, 158.9089)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Start Dialogue"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.076294, 5.2789154, 0.07067871)
+shape = SubResource("BoxShape3D_0fj1v")
 
-[node name="Trees5" parent="." instance=ExtResource("5_fo5ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.96019, 0.4037323, 154.13159)
+[node name="TempCollision" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 137.40916)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TempCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8512268, 2.5811157, 1.1901093)
+shape = SubResource("BoxShape3D_ikia7")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Objective2" type="Label" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -216.0
+offset_top = 21.0
+offset_right = -31.0
+offset_bottom = 52.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "Objective:"
+horizontal_alignment = 1
+
+[node name="Objective" type="Label" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -216.0
+offset_top = 54.0
+offset_right = -31.0
+offset_bottom = 85.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.9524457, 0.9524458, 3.85046e-06, 1)
+theme_override_font_sizes/font_size = 22
+text = "Go to the garden."
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="Ground/NavigationRegion3D/Door/DoorEntry" to="Ground/NavigationRegion3D/Door" method="_on_door_entry_body_entered"]
+[connection signal="body_exited" from="Ground/NavigationRegion3D/Door/DoorEntry" to="Ground/NavigationRegion3D/Door" method="_on_door_entry_body_exited"]
+[connection signal="body_entered" from="Start Dialogue" to="Start Dialogue" method="_on_body_entered"]
