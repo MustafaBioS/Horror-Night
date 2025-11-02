@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://ben5uu8hidxjq"]
+[gd_scene load_steps=15 format=3 uid="uid://ben5uu8hidxjq"]
 
 [ext_resource type="Texture2D" uid="uid://ddk537nxfw3q0" path="res://Assets/Walls/WoodFloor040_1K-JPG_Color.jpg" id="1_okrnj"]
 [ext_resource type="Texture2D" uid="uid://b20f5yamx7vdm" path="res://Assets/wall/textures/concrete_slab_wall_disp_4k.png" id="2_n87ef"]
 [ext_resource type="PackedScene" uid="uid://bpk21fk44n6wb" path="res://Assets/wooden_doorFBX.fbx" id="3_3jr7h"]
 [ext_resource type="Script" uid="uid://bf3qyr3q7yu5s" path="res://Scripts/player.gd" id="4_iqtyj"]
+[ext_resource type="PackedScene" uid="uid://kmwf6xffbx0h" path="res://Scenes/enemy.tscn" id="5_xi0mm"]
+[ext_resource type="Script" uid="uid://cj64mu7ux6bui" path="res://Scripts/hud.gd" id="6_bu6dc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n87ef"]
 albedo_texture = ExtResource("1_okrnj")
@@ -31,7 +33,7 @@ ambient_light_energy = 0.1
 fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-fog_density = 0.3
+fog_density = 1.0
 fog_height = 2.0
 fog_height_density = 1.0
 volumetric_fog_enabled = true
@@ -105,7 +107,7 @@ light_energy = 10.0
 light_indirect_energy = 0.5
 shadow_enabled = true
 shadow_bias = 0.05
-spot_range = 20.0
+spot_range = 65.0
 spot_attenuation = 0.3
 spot_angle = 25.0
 
@@ -133,3 +135,37 @@ shape = SubResource("BoxShape3D_iqtyj")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_iqtyj")
+
+[node name="Enemy" parent="." instance=ExtResource("5_xi0mm")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -15.17588, 0.50391877, 2.7709856)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("6_bu6dc")
+
+[node name="Objective" type="Label" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -216.0
+offset_top = 21.0
+offset_right = -31.0
+offset_bottom = 52.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "Objective:"
+horizontal_alignment = 1
+
+[node name="Objective2" type="Label" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -216.0
+offset_top = 54.0
+offset_right = -31.0
+offset_bottom = 85.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.9524457, 0.9524458, 3.85046e-06, 1)
+theme_override_font_sizes/font_size = 22
+text = "Go to the garden."
+horizontal_alignment = 1
