@@ -2,8 +2,8 @@ extends CharacterBody3D
 
 @onready var camera = $Camera3D
 
-const SPEED = 30.0
-const JUMP_VELOCITY = 6.5
+const SPEED = 15.0
+const JUMP_VELOCITY = 6.0
 var sensitivity = 0.003
 
 func _ready() -> void:

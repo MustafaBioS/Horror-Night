@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0foag087oohx"]
+
+[ext_resource type="ArrayMesh" uid="uid://bui4qmx6cpwq0" path="res://Assets/Wooden_Post_and_Rail_Fence_v1_L3.123cb404abd4-9043-4e47-ba62-3807effb5c83/13078_Wooden_Post_and_Rail_Fence_v1_l3.obj" id="1_on2qe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3vuvy"]
+size = Vector3(13.581879, 3.5252686, 0.5970459)
+
+[node name="Fence" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Fence" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(0.05, 0, 0, 0, 5.9624405e-10, 0.05, 0, -0.05, 5.9624405e-10, -9.748065, 0, -12.832263)
+mesh = ExtResource("1_on2qe")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4095917, 1.2626343, -12.602739)
+shape = SubResource("BoxShape3D_3vuvy")
