@@ -1,26 +1,43 @@
-[gd_scene load_steps=30 format=3 uid="uid://btxogjgmos46u"]
+[gd_scene load_steps=39 format=3 uid="uid://btxogjgmos46u"]
 
-[ext_resource type="PackedScene" uid="uid://dx0vp5fbe4rv5" path="res://Scenes/player.tscn" id="1_5a7ea"]
-[ext_resource type="Texture2D" uid="uid://ddk537nxfw3q0" path="res://Assets/Walls/WoodFloor040_1K-JPG_Color.jpg" id="1_go701"]
+[ext_resource type="Texture2D" uid="uid://c8wun3nbwcrvt" path="res://Assets/wall/textures/concrete_slab_wall_diff_4k.jpg" id="1_7yui6"]
 [ext_resource type="Texture2D" uid="uid://fq8w3o2sm1ug" path="res://Assets/Stone/PavingStones111_2K-JPG_Color.jpg" id="2_5a7ea"]
-[ext_resource type="ArrayMesh" uid="uid://qc4pb0d1r07" path="res://Assets/grass.res" id="3_8j60k"]
+[ext_resource type="Texture2D" uid="uid://b20f5yamx7vdm" path="res://Assets/wall/textures/concrete_slab_wall_disp_4k.png" id="2_c5t2i"]
 [ext_resource type="PackedScene" uid="uid://d22pkyiq6s0kl" path="res://Scenes/trees.tscn" id="5_fo5ed"]
 [ext_resource type="Script" uid="uid://cgaiexvb5b2pu" path="res://Scripts/door.gd" id="5_k7acu"]
 [ext_resource type="PackedScene" uid="uid://b0foag087oohx" path="res://Scenes/fence.tscn" id="6_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://bpk21fk44n6wb" path="res://Assets/wooden_doorFBX.fbx" id="6_o06y3"]
+[ext_resource type="Script" uid="uid://bt0x11qaj5j02" path="res://Scripts/scene.gd" id="7_ikia7"]
+[ext_resource type="Resource" uid="uid://y1wvkyoyg43k" path="res://Dialogues/scene.dialogue" id="8_c5t2i"]
 [ext_resource type="Script" uid="uid://c8yx3kldkc0rl" path="res://Scripts/start.gd" id="9_5v1tr"]
+[ext_resource type="Script" uid="uid://bf3qyr3q7yu5s" path="res://Scripts/player.gd" id="9_ikia7"]
 [ext_resource type="Resource" uid="uid://cx6o8wfo8ewbo" path="res://Dialogues/start.dialogue" id="10_0fj1v"]
+[ext_resource type="Script" uid="uid://cj64mu7ux6bui" path="res://Scripts/hud.gd" id="12_7yui6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5a7ea"]
 albedo_color = Color(0.023442816, 0.3459306, 0, 1)
 uv1_scale = Vector3(3, 3, 3)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8j60k"]
-albedo_texture = ExtResource("1_go701")
-uv1_scale = Vector3(2, 2, 2)
+[sub_resource type="NavigationMesh" id="NavigationMesh_c5t2i"]
+vertices = PackedVector3Array(-30.179169, 22.988955, -29.454422, -29.679169, 23.238955, -29.704422, -29.679169, 22.988955, -30.704422, -30.179169, 22.988955, -85.45442, 28.820831, 22.988955, -29.454422, 28.820831, 22.988955, -85.45442, 28.320831, 22.988955, -30.704422, 28.320831, 23.238955, -29.704422, 0.25631714, 33.738953, -29.704422, 0.27244568, 33.738953, -29.454422, 27.570831, 0.98895454, -47.954422, 27.570831, 0.98895454, -51.454422, 26.570831, 0.98895454, -52.704422, 5.5708313, 0.98895454, -31.204422, 26.570831, 0.98895454, -46.454422, 26.570831, 0.98895454, -43.454422, 27.570831, 0.98895454, -30.704422, 27.570831, 0.98895454, -42.204422, 5.8208313, 0.98895454, -30.704422, 26.570831, 0.98895454, -55.954422, 27.570831, 0.98895454, -57.204422, 27.570831, 0.98895454, -84.20442, -28.929169, 0.98895454, -84.20442, -28.929169, 0.98895454, -30.704422, -5.4291687, 0.98895454, -31.204422, 27.570831, 0.98895454, -64.309685, 27.570831, 1.4889545, -65.730736, 27.570831, 0.98895454, -67.151794, -5.6791687, 0.98895454, -30.704422, -4.1791687, 0.98895454, 80.54558, 4.3208313, 0.98895454, 80.54558, 4.3208313, 0.98895454, -27.954422, -4.1791687, 0.98895454, -27.954422, -28.179169, 13.738955, 76.79558, -28.179169, 14.988955, 99.29558, -26.929169, 14.988955, 99.29558, -26.929169, 13.738955, 76.79558, -28.179169, 18.738955, 83.82683, -28.179169, 20.238955, 86.63933, -28.179169, 19.988955, 90.85808, -26.929169, 19.988955, 90.85808, -26.929169, 20.238955, 86.63933, -26.929169, 18.738955, 83.82683, 20.820831, 13.738955, 76.79558, 20.820831, 14.988955, 99.29558, 22.070831, 14.988955, 99.29558, 22.070831, 13.738955, 76.79558, 20.820831, 18.738955, 83.82683, 20.820831, 20.238955, 86.63933, 20.820831, 19.988955, 90.85808, 22.070831, 19.988955, 90.85808, 22.070831, 20.238955, 86.63933, 22.070831, 18.738955, 83.82683, -28.179169, 0.48895454, 79.04558, -28.179169, 0.48895454, 81.29558, -26.929169, 0.48895454, 81.29558, -26.929169, 0.48895454, 79.04558, 20.820831, 0.48895454, 79.04558, 20.820831, 0.48895454, 81.29558, 22.070831, 0.48895454, 81.29558, 22.070831, 0.48895454, 79.04558, -19.429169, 4.7389545, 80.79558, -19.179169, 4.4889545, 81.29558, -18.429169, 4.2389545, 81.29558, -18.179169, 4.7389545, 80.79558, -16.429169, 4.7389545, 80.54558, -14.429169, 3.7389545, 81.29558, -14.429169, 4.4889545, 80.54558, -16.929169, 5.4889545, 79.79558, 4.3208313, 0.98895454, 82.54558, -4.4291687, 0.98895454, 83.04558, 6.8208313, 0.98895454, 94.54558, 6.8208313, 0.98895454, 83.04558, 4.8208313, 0.98895454, 83.04558, -11.679169, 0.98895454, 93.79558, -11.679169, 0.98895454, 94.54558, -12.179169, 0.98895454, 83.04558, -12.179169, 0.98895454, 93.54558, -19.179169, 6.9889545, 82.54558, -19.179169, 6.9889545, 95.29558, -13.179169, 6.9889545, 95.29558, -13.179169, 6.9889545, 82.54558, -18.179169, 3.9889545, 82.79558, -18.929169, 3.7389545, 82.79558, -18.429169, 3.4889545, 83.79558, -18.179169, 3.9889545, 83.54558, -17.679169, 3.7389545, 84.04558, -17.679169, 3.4889545, 84.79558, -15.679169, 3.2389545, 85.04558, -15.179169, 3.4889545, 84.29558, -15.179169, 3.9889545, 83.79558, -17.179169, 4.2389545, 83.62891, -20.929169, 0.98895454, 93.54558, -20.179169, 0.98895454, 93.04558, -20.179169, 0.98895454, 83.79558, -20.929169, 0.98895454, 83.04558, -54.92917, 0.98895454, 83.04558, -54.92917, 0.98895454, 94.54558, -20.929169, 0.98895454, 94.54558, 64.07083, 0.98895454, 94.54558, 64.07083, 0.98895454, 83.04558, -15.679169, 3.9889545, 91.29558, -17.429169, 3.7389545, 91.29558, -16.429169, 4.2389545, 91.79558, -14.679169, 3.7389545, 91.54558, -17.179169, 3.2389545, 87.79558, -17.179169, 3.7389545, 90.29558, -15.929169, 3.4889545, 89.54558, -15.679169, 3.2389545, 87.29558, -15.679169, 3.9889545, 90.54558, -16.179169, 3.2389545, 86.04558, -17.429169, 3.7389545, 85.54558, -17.929169, 3.2389545, 86.04558, -17.679169, 2.9889545, 87.54558, -14.429169, 0.98895454, 86.29558, -14.429169, 0.98895454, 88.04558, -13.929169, 0.98895454, 88.29558, -13.429169, 0.98895454, 90.04558, -13.429169, 0.98895454, 85.54558, -18.929169, 0.98895454, 88.04558, -18.929169, 0.98895454, 89.79558, -18.429169, 0.98895454, 89.04558, -16.679169, 4.2389545, 92.79558, -16.179169, 4.4889545, 93.29558, -14.679169, 4.2389545, 92.79558, -18.679169, 4.4889545, 95.04558, -15.179169, 4.7389545, 94.54558, -18.179169, 3.7389545, 93.79558, -18.679169, 4.2389545, 94.54558, -16.179169, 4.7389545, 94.29558, -16.429169, 1.7389545, 96.29558, -16.429169, 1.4889545, 97.04558, -15.929169, 1.4889545, 97.04558, -15.929169, 1.7389545, 96.29558)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(4, 9, 7), PackedInt32Array(7, 9, 8), PackedInt32Array(8, 9, 1), PackedInt32Array(1, 9, 0), PackedInt32Array(6, 2, 5), PackedInt32Array(5, 2, 3), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 14), PackedInt32Array(12, 14, 13), PackedInt32Array(14, 15, 13), PackedInt32Array(17, 16, 15), PackedInt32Array(15, 16, 18), PackedInt32Array(15, 18, 13), PackedInt32Array(20, 19, 25), PackedInt32Array(25, 19, 26), PackedInt32Array(26, 19, 27), PackedInt32Array(27, 19, 21), PackedInt32Array(21, 19, 24), PackedInt32Array(21, 24, 23), PackedInt32Array(21, 23, 22), PackedInt32Array(24, 28, 23), PackedInt32Array(12, 13, 19), PackedInt32Array(19, 13, 24), PackedInt32Array(32, 31, 29), PackedInt32Array(29, 31, 30), PackedInt32Array(36, 42, 33), PackedInt32Array(33, 42, 37), PackedInt32Array(37, 42, 41), PackedInt32Array(37, 41, 38), PackedInt32Array(38, 41, 40), PackedInt32Array(38, 40, 39), PackedInt32Array(39, 40, 35), PackedInt32Array(39, 35, 34), PackedInt32Array(46, 52, 43), PackedInt32Array(43, 52, 47), PackedInt32Array(47, 52, 51), PackedInt32Array(47, 51, 48), PackedInt32Array(48, 51, 50), PackedInt32Array(48, 50, 49), PackedInt32Array(49, 50, 45), PackedInt32Array(49, 45, 44), PackedInt32Array(56, 55, 53), PackedInt32Array(53, 55, 54), PackedInt32Array(60, 59, 57), PackedInt32Array(57, 59, 58), PackedInt32Array(62, 61, 63), PackedInt32Array(63, 61, 64), PackedInt32Array(66, 65, 67), PackedInt32Array(67, 65, 68), PackedInt32Array(65, 64, 68), PackedInt32Array(68, 64, 61), PackedInt32Array(30, 69, 29), PackedInt32Array(29, 69, 70), PackedInt32Array(73, 72, 71), PackedInt32Array(69, 73, 70), PackedInt32Array(70, 73, 71), PackedInt32Array(70, 71, 74), PackedInt32Array(74, 71, 75), PackedInt32Array(77, 76, 74), PackedInt32Array(74, 76, 70), PackedInt32Array(81, 80, 78), PackedInt32Array(78, 80, 79), PackedInt32Array(85, 84, 82), PackedInt32Array(82, 84, 83), PackedInt32Array(88, 87, 86), PackedInt32Array(86, 84, 85), PackedInt32Array(85, 91, 86), PackedInt32Array(86, 91, 88), PackedInt32Array(88, 91, 89), PackedInt32Array(89, 91, 90), PackedInt32Array(93, 92, 94), PackedInt32Array(94, 92, 95), PackedInt32Array(95, 92, 96), PackedInt32Array(96, 92, 97), PackedInt32Array(92, 98, 97), PackedInt32Array(72, 100, 71), PackedInt32Array(71, 100, 99), PackedInt32Array(104, 103, 101), PackedInt32Array(101, 103, 102), PackedInt32Array(108, 107, 105), PackedInt32Array(105, 107, 106), PackedInt32Array(104, 101, 109), PackedInt32Array(109, 107, 104), PackedInt32Array(107, 109, 106), PackedInt32Array(111, 110, 112), PackedInt32Array(112, 110, 113), PackedInt32Array(113, 110, 105), PackedInt32Array(105, 110, 108), PackedInt32Array(116, 115, 114), PackedInt32Array(114, 118, 116), PackedInt32Array(116, 118, 117), PackedInt32Array(119, 121, 120), PackedInt32Array(124, 123, 122), PackedInt32Array(128, 127, 125), PackedInt32Array(125, 127, 129), PackedInt32Array(125, 129, 126), PackedInt32Array(133, 132, 130), PackedInt32Array(130, 132, 131)]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fo5ed"]
-albedo_texture = ExtResource("1_go701")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c5t2i"]
+albedo_texture = ExtResource("1_7yui6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e0ngr"]
+albedo_texture = ExtResource("2_c5t2i")
+uv1_scale = Vector3(15, 15, 15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kn0ld"]
+albedo_texture = ExtResource("2_c5t2i")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7yui6"]
+load_path = "res://.godot/imported/Poliigon_PlasterPainted_7664_Preview1.png-89e1413f79e41cefb7fd7280e0af0200.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8j60k"]
+albedo_texture = SubResource("CompressedTexture2D_7yui6")
+uv1_scale = Vector3(2, 2, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ukr8"]
 albedo_texture = ExtResource("2_5a7ea")
@@ -41,67 +58,43 @@ size = Vector3(10.028015, 10.447357, 9.475708)
 [sub_resource type="BoxShape3D" id="BoxShape3D_k7acu"]
 size = Vector3(10.094849, 10.374573, 2.0236816)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_c5t2i"]
+size = Vector3(5.054428, 6, 14.071014)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0fj1v"]
 radius = 0.77978516
 height = 14.532551
-
-[sub_resource type="Animation" id="Animation_0fj1v"]
-resource_name = "fall"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Trees92:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-1.4434396, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Trees92:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-16.236475, 0.4037323, 100.390854), Vector3(-16.236475, 0.4037323, 96.30504)]
-}
 
 [sub_resource type="Animation" id="Animation_ikia7"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Trees92:rotation")
+tracks/0/path = NodePath("Trees92:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(-16.236475, 0.4037323, 100.390854)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Trees92:position")
+tracks/1/path = NodePath("Trees92:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-16.236475, 0.4037323, 100.390854)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Falling Tree2/Trees58:rotation")
+tracks/2/path = NodePath("Trees58:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -113,7 +106,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Falling Tree2/Trees58:position")
+tracks/3/path = NodePath("Trees58:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -123,31 +116,58 @@ tracks/3/keys = {
 "values": [Vector3(-16.835617, 0, 77.420364)]
 }
 
-[sub_resource type="Animation" id="Animation_7yui6"]
-resource_name = "fall2"
+[sub_resource type="Animation" id="Animation_0fj1v"]
+resource_name = "fall"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Falling Tree2/Trees58:rotation")
+tracks/0/path = NodePath("Trees92:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(1.358477, 0, 0)]
+"values": [Vector3(-16.236475, 0.4037323, 100.390854), Vector3(-16.236475, 0.4037323, 96.86934)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Falling Tree2/Trees58:position")
+tracks/1/path = NodePath("Trees92:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(-16.835617, 0, 77.420364), Vector3(-16.835617, 0, 79.315216)]
+"values": [Vector3(0, 0, 0), Vector3(-1.4020929, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7yui6"]
+resource_name = "fall2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Trees58:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.4003824, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Trees58:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-16.835617, 0, 77.420364), Vector3(-16.835617, 0, 79.54329)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c5t2i"]
@@ -159,10 +179,6 @@ _data = {
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7yui6"]
 size = Vector3(6.60643, 6.9970703, 13.362564)
-
-[sub_resource type="MultiMesh" id="MultiMesh_fo5ed"]
-transform_format = 1
-mesh = ExtResource("3_8j60k")
 
 [sub_resource type="Environment" id="Environment_fo5ed"]
 background_mode = 1
@@ -176,6 +192,10 @@ fog_height_density = 1.0
 volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(0.627451, 0.627451, 0.627451, 1)
 volumetric_fog_anisotropy = 0.6
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_f60y1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v0iea"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0fj1v"]
 size = Vector3(17.428467, 11.557831, 12.390381)
@@ -192,28 +212,31 @@ size = Vector3(250, 1, 250)
 material = SubResource("StandardMaterial3D_5a7ea")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="Ground"]
+navigation_mesh = SubResource("NavigationMesh_c5t2i")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="Ground/NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.70541334, 0.0962677, -56.871902)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Ground/NavigationRegion3D/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6331177, 0, -0.6317444)
+material_override = SubResource("StandardMaterial3D_c5t2i")
 size = Vector3(59.290405, 1, 56.90155)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Ground/NavigationRegion3D/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -1.633, 11.292, -28.582)
 size = Vector3(59.290405, 1, 22.237854)
-material = SubResource("StandardMaterial3D_8j60k")
+material = SubResource("StandardMaterial3D_e0ngr")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Ground/NavigationRegion3D/CSGCombiner3D"]
 transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -30.752926, 11.292, -0.5592346)
 size = Vector3(56.750317, 1, 22.238)
-material = SubResource("StandardMaterial3D_8j60k")
+material = SubResource("StandardMaterial3D_e0ngr")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Ground/NavigationRegion3D/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -1.633, 11.292, 27.311928)
+material_override = SubResource("StandardMaterial3D_kn0ld")
 size = Vector3(59.290405, 1, 22.237854)
-material = SubResource("StandardMaterial3D_8j60k")
+material = SubResource("StandardMaterial3D_e0ngr")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="Ground/NavigationRegion3D/CSGCombiner3D/CSGBox3D4"]
 transform = Transform3D(1, 0, -8.351872e-23, -8.351872e-23, -4.371139e-08, 1, 3.650719e-30, -1, -4.371139e-08, 0.91989684, -0.60419655, 6.711647)
@@ -223,7 +246,7 @@ size = Vector3(10.102657, 10.160706, 4.0004883)
 [node name="CSGBox3D5" type="CSGBox3D" parent="Ground/NavigationRegion3D/CSGCombiner3D"]
 transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 27.870892, 11.292, -0.5592346)
 size = Vector3(56.750317, 1, 22.238)
-material = SubResource("StandardMaterial3D_8j60k")
+material = SubResource("StandardMaterial3D_e0ngr")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Ground/NavigationRegion3D/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6331177, 21.874443, -0.6317444)
@@ -233,7 +256,7 @@ material = SubResource("StandardMaterial3D_8j60k")
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Ground/NavigationRegion3D/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09211922, 22.932823, 27.832014)
 polygon = PackedVector2Array(-31.21028, -0.61615753, -0.27747166, 10.215481, 0.5714189, 2.0024357, -0.2762059, 10.217407, 28.542908, -0.55064774)
-material = SubResource("StandardMaterial3D_fo5ed")
+material = SubResource("StandardMaterial3D_e0ngr")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="Ground/NavigationRegion3D/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.70541334, 0.027012825, 83.37526)
@@ -794,10 +817,19 @@ shape = SubResource("BoxShape3D_o06y3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.030578613, 4.6872864, -29.692436)
 shape = SubResource("BoxShape3D_k7acu")
 
-[node name="Falling Tree" type="RigidBody3D" parent="Ground/NavigationRegion3D"]
+[node name="SceneArea" type="Area3D" parent="Ground/NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.478932, 0, 88.63161)
+script = ExtResource("7_ikia7")
+dialogue_resource = ExtResource("8_c5t2i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/NavigationRegion3D/SceneArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.96634674, 3.4989998, 0.32276917)
+shape = SubResource("BoxShape3D_c5t2i")
+
+[node name="Falling Tree" type="StaticBody3D" parent="Ground/NavigationRegion3D"]
 
 [node name="Trees92" parent="Ground/NavigationRegion3D/Falling Tree" instance=ExtResource("5_fo5ed")]
-transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -16.236475, 0.4037323, 100.390854)
+transform = Transform3D(1.5, 0, 0, 0, 1.5000001, 0, 0, 0, 1.5000001, -16.236475, 0.4037323, 100.390854)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/NavigationRegion3D/Falling Tree"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.234135, 4.722292, 100.35373)
@@ -812,25 +844,22 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.170214, 2.9985352, 88.968796)
 shape = SubResource("BoxShape3D_7yui6")
 
-[node name="Falling Tree2" type="RigidBody3D" parent="Ground/NavigationRegion3D"]
+[node name="Falling Tree 2" type="StaticBody3D" parent="Ground/NavigationRegion3D"]
 
-[node name="Trees58" parent="Ground/NavigationRegion3D/Falling Tree2" instance=ExtResource("5_fo5ed")]
-transform = Transform3D(1.2499999, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -16.835617, 0, 77.420364)
+[node name="Trees58" parent="Ground/NavigationRegion3D/Falling Tree 2" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5000001, 0, 0, 0, 1.5000001, -16.835617, 0, 77.420364)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/NavigationRegion3D/Falling Tree2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/NavigationRegion3D/Falling Tree 2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.740875, 4.722292, 77.53203)
 shape = SubResource("CapsuleShape3D_0fj1v")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Ground/NavigationRegion3D/Falling Tree2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Ground/NavigationRegion3D/Falling Tree 2"]
 libraries = {
 &"": SubResource("AnimationLibrary_c5t2i")
 }
 
-[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="Ground"]
-multimesh = SubResource("MultiMesh_fo5ed")
-
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 21.743494, 15.937311, 145.74156)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 21.782316, 15.937311, 145.74156)
 modulate = Color(0.33448356, 0.07943136, 0.08594418, 1)
 text = "Welcome To
 The Haunted House"
@@ -845,18 +874,29 @@ font_size = 250
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fo5ed")
 
-[node name="Player" parent="." instance=ExtResource("1_5a7ea")]
+[node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(-1.3113416e-07, 0, 3, 0, 3, 0, -3, 0, -1.3113416e-07, 55.576466, 3.3883953, 146.13443)
+script = ExtResource("9_ikia7")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.99998915, -0.0046600252, 0, 0.0046600252, -0.99998915, 0, 12.502882, 0)
-light_energy = 24.2
-omni_range = 100.0
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("CapsuleMesh_f60y1")
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.99998915, -0.0046600252, 0, 0.0046600252, -0.99998915, 0, 12.502882, 61.27283)
-light_energy = 24.2
-omni_range = 100.0
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_v0iea")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43959373, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Player/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.43959373, -0.5692222)
+light_energy = 6.0
+light_indirect_energy = 0.5
+light_volumetric_fog_energy = 8.0
+shadow_enabled = true
+shadow_bias = 0.05
+spot_range = 20.0
+spot_attenuation = 0.3
+spot_angle = 25.0
 
 [node name="Start Dialogue" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.11531, 0, 146.23549)
@@ -875,8 +915,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8512268, 2.5811157, 1.1901
 shape = SubResource("BoxShape3D_ikia7")
 
 [node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("12_7yui6")
 
-[node name="Objective2" type="Label" parent="HUD"]
+[node name="Objective" type="Label" parent="HUD"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -890,7 +931,7 @@ theme_override_font_sizes/font_size = 22
 text = "Objective:"
 horizontal_alignment = 1
 
-[node name="Objective" type="Label" parent="HUD"]
+[node name="Objective2" type="Label" parent="HUD"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -906,4 +947,5 @@ horizontal_alignment = 1
 
 [connection signal="body_entered" from="Ground/NavigationRegion3D/Door/DoorEntry" to="Ground/NavigationRegion3D/Door" method="_on_door_entry_body_entered"]
 [connection signal="body_exited" from="Ground/NavigationRegion3D/Door/DoorEntry" to="Ground/NavigationRegion3D/Door" method="_on_door_entry_body_exited"]
+[connection signal="body_entered" from="Ground/NavigationRegion3D/SceneArea" to="Ground/NavigationRegion3D/SceneArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Start Dialogue" to="Start Dialogue" method="_on_body_entered"]

@@ -1,3 +1,135 @@
-[gd_scene format=3 uid="uid://ben5uu8hidxjq"]
+[gd_scene load_steps=13 format=3 uid="uid://ben5uu8hidxjq"]
+
+[ext_resource type="Texture2D" uid="uid://ddk537nxfw3q0" path="res://Assets/Walls/WoodFloor040_1K-JPG_Color.jpg" id="1_okrnj"]
+[ext_resource type="Texture2D" uid="uid://b20f5yamx7vdm" path="res://Assets/wall/textures/concrete_slab_wall_disp_4k.png" id="2_n87ef"]
+[ext_resource type="PackedScene" uid="uid://bpk21fk44n6wb" path="res://Assets/wooden_doorFBX.fbx" id="3_3jr7h"]
+[ext_resource type="Script" uid="uid://bf3qyr3q7yu5s" path="res://Scripts/player.gd" id="4_iqtyj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n87ef"]
+albedo_texture = ExtResource("1_okrnj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3jr7h"]
+albedo_texture = ExtResource("2_n87ef")
+uv1_scale = Vector3(15, 15, 15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iqtyj"]
+albedo_texture = ExtResource("1_okrnj")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xi0mm"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bu6dc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xi0mm"]
+size = Vector3(75, 1, 75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iqtyj"]
+size = Vector3(1.6240234, 26.393677, 74.86421)
+
+[sub_resource type="Environment" id="Environment_iqtyj"]
+background_mode = 1
+ambient_light_energy = 0.1
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+fog_density = 0.3
+fog_height = 2.0
+fog_height_density = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0.627451, 0.627451, 0.627451, 1)
+volumetric_fog_anisotropy = 0.6
 
 [node name="House" type="Node3D"]
+
+[node name="CSGContainer" type="CSGCombiner3D" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="CSGContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.546143, 0, -0.010498047)
+size = Vector3(75, 1, 75)
+material = SubResource("StandardMaterial3D_n87ef")
+
+[node name="Wall" type="CSGBox3D" parent="CSGContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.563656, 12.9627075, 37.126297)
+size = Vector3(75, 25, 1)
+material = SubResource("StandardMaterial3D_3jr7h")
+
+[node name="Wall2" type="CSGBox3D" parent="CSGContainer"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -46.664063, 12.9627075, 0.008497238)
+size = Vector3(75, 25, 1)
+material = SubResource("StandardMaterial3D_3jr7h")
+
+[node name="Wall3" type="CSGBox3D" parent="CSGContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.563656, 12.9627075, -37.367516)
+size = Vector3(75, 25, 1)
+material = SubResource("StandardMaterial3D_3jr7h")
+
+[node name="Wall4" type="CSGBox3D" parent="CSGContainer"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 27.374237, 12.9627075, -0.038705826)
+size = Vector3(75, 25, 1)
+material = SubResource("StandardMaterial3D_3jr7h")
+
+[node name="Ceiling" type="CSGBox3D" parent="CSGContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.546143, 25.883091, -0.010498047)
+size = Vector3(75, 1, 75)
+material = SubResource("StandardMaterial3D_3jr7h")
+
+[node name="Door" type="CSGBox3D" parent="CSGContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.18908, 4.9233265, 1.1749077)
+operation = 2
+size = Vector3(2.1782227, 8.902832, 9.7248535)
+material = SubResource("StandardMaterial3D_iqtyj")
+
+[node name="Door" type="StaticBody3D" parent="."]
+
+[node name="wooden_doorFBX" parent="Door" instance=ExtResource("3_3jr7h")]
+transform = Transform3D(-2.491549e-07, 0, -4.5, 0, 4.5, 0, 5.7, 0, -1.9670125e-07, 26.78, 4.991, 3.931)
+
+[node name="wooden_doorFBX2" parent="Door" instance=ExtResource("3_3jr7h")]
+transform = Transform3D(-2.491549e-07, 0, 4.5, 0, 4.5, 0, -5.7, 0, -1.9670125e-07, 26.994661, 4.9906654, -1.1365657)
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(-1.3113416e-07, 0, 3, 0, 3, 0, -3, 0, -1.3113416e-07, 24.346458, 3.1253371, 1.8493555)
+script = ExtResource("4_iqtyj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("CapsuleMesh_xi0mm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_bu6dc")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43959373, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Player/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.43959373, -0.5692222)
+light_energy = 10.0
+light_indirect_energy = 0.5
+shadow_enabled = true
+shadow_bias = 0.05
+spot_range = 20.0
+spot_attenuation = 0.3
+spot_angle = 25.0
+
+[node name="Collision" type="StaticBody3D" parent="."]
+
+[node name="Floor" type="CollisionShape3D" parent="Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.703127, 0, 0)
+shape = SubResource("BoxShape3D_xi0mm")
+
+[node name="Wall" type="CollisionShape3D" parent="Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.2964, 12.774109, 0.22094917)
+shape = SubResource("BoxShape3D_iqtyj")
+
+[node name="Wall2" type="CollisionShape3D" parent="Collision"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.88154, 12.774109, -37.576637)
+shape = SubResource("BoxShape3D_iqtyj")
+
+[node name="Wall3" type="CollisionShape3D" parent="Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.690483, 12.774109, 0.22094917)
+shape = SubResource("BoxShape3D_iqtyj")
+
+[node name="Wall4" type="CollisionShape3D" parent="Collision"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.88154, 12.774109, 37.275223)
+shape = SubResource("BoxShape3D_iqtyj")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_iqtyj")

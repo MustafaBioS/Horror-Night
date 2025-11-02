@@ -45,7 +45,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Assets/grass.res",
+"save_to_file/fallback_path": "res://Assets/grass2.res",
 "save_to_file/path": "uid://not46h48lyn4"
 }
 }
