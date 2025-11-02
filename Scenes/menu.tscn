@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://q241ibfylgww"]
+[gd_scene load_steps=9 format=3 uid="uid://q241ibfylgww"]
 
 [ext_resource type="FontFile" uid="uid://dq1sidubjd4fq" path="res://Fons/Karina.ttf" id="1_1rerr"]
 [ext_resource type="Script" uid="uid://dmnfqnb75qye1" path="res://Scripts/menu.gd" id="1_xhh6f"]
+[ext_resource type="Texture2D" uid="uid://bed7e20ccm13i" path="res://Assets/image (3).png" id="2_cayip"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4yt8"]
-bg_color = Color(0.20152655, 0.20152661, 0.20152646, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_158mb"]
+texture = ExtResource("2_cayip")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rerr"]
 bg_color = Color(1, 1, 1, 1)
@@ -45,7 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_u4yt8")
+theme_override_styles/panel = SubResource("StyleBoxTexture_158mb")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1

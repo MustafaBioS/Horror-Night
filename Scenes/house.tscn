@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ben5uu8hidxjq"]
+[gd_scene load_steps=26 format=3 uid="uid://ben5uu8hidxjq"]
 
 [ext_resource type="Texture2D" uid="uid://ddk537nxfw3q0" path="res://Assets/Walls/WoodFloor040_1K-JPG_Color.jpg" id="1_okrnj"]
 [ext_resource type="Texture2D" uid="uid://b20f5yamx7vdm" path="res://Assets/wall/textures/concrete_slab_wall_disp_4k.png" id="2_n87ef"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://bf3qyr3q7yu5s" path="res://Scripts/player.gd" id="4_iqtyj"]
 [ext_resource type="PackedScene" uid="uid://kmwf6xffbx0h" path="res://Scenes/enemy.tscn" id="5_xi0mm"]
 [ext_resource type="Script" uid="uid://cj64mu7ux6bui" path="res://Scripts/hud.gd" id="6_bu6dc"]
+[ext_resource type="Script" uid="uid://bkr3gpw7d5qvo" path="res://Scripts/pause.gd" id="7_gau5j"]
+[ext_resource type="FontFile" uid="uid://dq1sidubjd4fq" path="res://Fons/Karina.ttf" id="8_7ug6d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n87ef"]
 albedo_texture = ExtResource("1_okrnj")
@@ -16,6 +18,20 @@ uv1_scale = Vector3(15, 15, 15)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iqtyj"]
 albedo_texture = ExtResource("1_okrnj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gau5j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gau5j"]
+size = Vector3(2.810791, 0.88275146, 7.0825195)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ug6d"]
+size = Vector3(5.7794495, 1.0645752, 73.84454)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lmwq5"]
+size = Vector3(74.20705, 1.0645752, 65.64955)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x4svt"]
+size = Vector3(45.428925, 1.0645752, 8.311663)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xi0mm"]
 
@@ -40,6 +56,29 @@ volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(0.627451, 0.627451, 0.627451, 1)
 volumetric_fog_anisotropy = 0.6
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lmwq5"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4svt"]
+bg_color = Color(0.50928575, 0.50928634, 0.50928587, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttg8n"]
+bg_color = Color(0.7539839, 0.75398386, 0.75398386, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0h1dt"]
+
 [node name="House" type="Node3D"]
 
 [node name="CSGContainer" type="CSGCombiner3D" parent="."]
@@ -51,26 +90,26 @@ material = SubResource("StandardMaterial3D_n87ef")
 
 [node name="Wall" type="CSGBox3D" parent="CSGContainer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.563656, 12.9627075, 37.126297)
-size = Vector3(75, 25, 1)
+size = Vector3(75, 35, 1)
 material = SubResource("StandardMaterial3D_3jr7h")
 
 [node name="Wall2" type="CSGBox3D" parent="CSGContainer"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -46.664063, 12.9627075, 0.008497238)
-size = Vector3(75, 25, 1)
+size = Vector3(75, 35, 1)
 material = SubResource("StandardMaterial3D_3jr7h")
 
 [node name="Wall3" type="CSGBox3D" parent="CSGContainer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.563656, 12.9627075, -37.367516)
-size = Vector3(75, 25, 1)
+size = Vector3(75, 35, 1)
 material = SubResource("StandardMaterial3D_3jr7h")
 
 [node name="Wall4" type="CSGBox3D" parent="CSGContainer"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 27.374237, 12.9627075, -0.038705826)
-size = Vector3(75, 25, 1)
+size = Vector3(75, 35, 1)
 material = SubResource("StandardMaterial3D_3jr7h")
 
 [node name="Ceiling" type="CSGBox3D" parent="CSGContainer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.546143, 25.883091, -0.010498047)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.546143, 30.45705, -0.010498047)
 size = Vector3(75, 1, 75)
 material = SubResource("StandardMaterial3D_3jr7h")
 
@@ -79,6 +118,122 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.18908, 4.9233265, 1.174907
 operation = 2
 size = Vector3(2.1782227, 8.902832, 9.7248535)
 material = SubResource("StandardMaterial3D_iqtyj")
+
+[node name="Stairs" type="CSGCombiner3D" parent="CSGContainer"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGContainer/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.03745, 2.423442, 33.1828)
+size = Vector3(2.7260132, 1, 6.9317627)
+material = SubResource("StandardMaterial3D_gau5j")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGContainer/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.480648, 3.7549224, 33.1828)
+size = Vector3(2.7260132, 1, 6.9317627)
+material = SubResource("StandardMaterial3D_gau5j")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGContainer/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8014727, 4.792954, 33.1828)
+size = Vector3(2.7260132, 1, 6.9317627)
+material = SubResource("StandardMaterial3D_gau5j")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGContainer/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2446718, 6.1244345, 33.1828)
+size = Vector3(2.7260132, 1, 6.9317627)
+material = SubResource("StandardMaterial3D_gau5j")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGContainer/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3145666, 7.667621, 32.831264)
+size = Vector3(2.7260132, 1, 6.9317627)
+material = SubResource("StandardMaterial3D_gau5j")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGContainer/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8713684, 8.999102, 32.831264)
+size = Vector3(2.7260132, 1, 6.9317627)
+material = SubResource("StandardMaterial3D_gau5j")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGContainer/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.550545, 10.037133, 32.831264)
+size = Vector3(2.7260132, 1, 6.9317627)
+material = SubResource("StandardMaterial3D_gau5j")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSGContainer/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.29762, 11.134088, 33.1828)
+size = Vector3(2.7260132, 1, 6.9317627)
+material = SubResource("StandardMaterial3D_gau5j")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="CSGContainer/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.854422, 12.465569, 33.1828)
+size = Vector3(2.7260132, 1, 6.9317627)
+material = SubResource("StandardMaterial3D_gau5j")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="CSGContainer/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.533598, 13.503599, 33.1828)
+size = Vector3(2.7260132, 1, 6.9317627)
+material = SubResource("StandardMaterial3D_gau5j")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="CSGContainer/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.701082, 14.83508, -0.33200455)
+size = Vector3(73.77022, 1, 73.96137)
+material = SubResource("StandardMaterial3D_gau5j")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGContainer/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.8667145, 14.865848, 32.34622)
+operation = 2
+size = Vector3(23.082367, 1.3829346, 7.81781)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGContainer/Stairs"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGContainer/Stairs/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.087836, 2.3791106, 33.252937)
+shape = SubResource("BoxShape3D_gau5j")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CSGContainer/Stairs/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.499171, 3.7775545, 33.252937)
+shape = SubResource("BoxShape3D_gau5j")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="CSGContainer/Stairs/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7884345, 4.813563, 33.252937)
+shape = SubResource("BoxShape3D_gau5j")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="CSGContainer/Stairs/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23547, 6.128221, 33.252937)
+shape = SubResource("BoxShape3D_gau5j")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="CSGContainer/Stairs/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.362562, 7.668158, 32.878746)
+shape = SubResource("BoxShape3D_gau5j")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="CSGContainer/Stairs/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8483453, 9.032134, 32.878746)
+shape = SubResource("BoxShape3D_gau5j")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="CSGContainer/Stairs/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.523979, 10.043053, 32.878746)
+shape = SubResource("BoxShape3D_gau5j")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="CSGContainer/Stairs/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.251359, 11.109137, 33.10157)
+shape = SubResource("BoxShape3D_gau5j")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="CSGContainer/Stairs/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.796925, 12.507177, 33.10157)
+shape = SubResource("BoxShape3D_gau5j")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="CSGContainer/Stairs/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.521717, 13.522599, 33.10157)
+shape = SubResource("BoxShape3D_gau5j")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="CSGContainer/Stairs/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.244076, 14.821877, -0.27944183)
+shape = SubResource("BoxShape3D_7ug6d")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="CSGContainer/Stairs/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.969723, 14.821877, -4.376938)
+shape = SubResource("BoxShape3D_lmwq5")
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="CSGContainer/Stairs/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.313293, 14.85717, 32.142612)
+shape = SubResource("BoxShape3D_x4svt")
 
 [node name="Door" type="StaticBody3D" parent="."]
 
@@ -103,6 +258,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43959373, 0)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Player/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.43959373, -0.5692222)
+visible = false
 light_energy = 10.0
 light_indirect_energy = 0.5
 shadow_enabled = true
@@ -169,3 +325,115 @@ theme_override_colors/font_color = Color(0.9524457, 0.9524458, 3.85046e-06, 1)
 theme_override_font_sizes/font_size = 22
 text = "Go to the garden."
 horizontal_alignment = 1
+
+[node name="Pause" type="CanvasLayer" parent="."]
+script = ExtResource("7_gau5j")
+
+[node name="Background" type="Panel" parent="Pause"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="Pause"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -111.5
+offset_top = 108.0
+offset_right = 111.5
+offset_bottom = 171.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("8_7ug6d")
+theme_override_font_sizes/font_size = 65
+text = "Paused"
+
+[node name="ButtonCon" type="VBoxContainer" parent="Pause"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.5
+offset_top = -90.0
+offset_right = 108.5
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Resume" type="Button" parent="Pause/ButtonCon"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_lmwq5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x4svt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ttg8n")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0h1dt")
+text = "Resume"
+
+[node name="Options" type="Button" parent="Pause/ButtonCon"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_lmwq5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x4svt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ttg8n")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0h1dt")
+text = "Options"
+
+[node name="Menu" type="Button" parent="Pause/ButtonCon"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_lmwq5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x4svt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ttg8n")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0h1dt")
+text = "Main Menu"
+
+[node name="Exit" type="Button" parent="Pause/ButtonCon"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_lmwq5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x4svt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ttg8n")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0h1dt")
+text = "Exit"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8684697, 17.021156, 0)
+light_energy = 16.0
+omni_range = 878.099
+
+[connection signal="pressed" from="Pause/ButtonCon/Resume" to="Pause" method="_on_resume_pressed"]
+[connection signal="pressed" from="Pause/ButtonCon/Options" to="Pause" method="_on_options_pressed"]
+[connection signal="pressed" from="Pause/ButtonCon/Menu" to="Pause" method="_on_menu_pressed"]
+[connection signal="pressed" from="Pause/ButtonCon/Exit" to="Pause" method="_on_exit_pressed"]

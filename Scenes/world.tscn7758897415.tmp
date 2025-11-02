@@ -52,13 +52,13 @@ albedo_color = Color(0.87058824, 0.72156864, 0.5294118, 1)
 size = Vector3(2.054596, 13.651001, 1.5044498)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o06y3"]
-size = Vector3(10.028015, 10.447357, 10.296897)
+size = Vector3(10.028015, 10.447357, 4.5192184)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k7acu"]
 size = Vector3(10.094849, 10.374573, 2.0236816)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c5t2i"]
-size = Vector3(5.6614876, 6, 14.071014)
+size = Vector3(3.4196544, 6, 14.071014)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0fj1v"]
 radius = 0.77978516
@@ -177,7 +177,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7yui6"]
-size = Vector3(4.725521, 6.9970703, 13.362564)
+size = Vector3(6.60643, 6.9970703, 13.362564)
 
 [sub_resource type="Environment" id="Environment_fo5ed"]
 background_mode = 1
@@ -832,7 +832,7 @@ transform = Transform3D(-6, 0, -4.371139e-07, 0, 5, 0, 5.2453663e-07, 0, -5, -2.
 [node name="DoorEntry" type="Area3D" parent="Ground/NavigationRegion3D/Door"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/NavigationRegion3D/Door/DoorEntry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007598877, 4.7236786, -28.068287)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007598877, 4.7236786, -30.957125)
 shape = SubResource("BoxShape3D_o06y3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/NavigationRegion3D/Door"]
@@ -845,7 +845,7 @@ script = ExtResource("7_ikia7")
 dialogue_resource = ExtResource("8_c5t2i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/NavigationRegion3D/SceneArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3462467, 3.4989998, 0.32276917)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22533035, 3.4989998, 0.32276917)
 shape = SubResource("BoxShape3D_c5t2i")
 
 [node name="Falling Tree" type="StaticBody3D" parent="Ground/NavigationRegion3D"]
@@ -863,7 +863,7 @@ libraries = {
 }
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Ground/NavigationRegion3D/Falling Tree"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.110668, 2.9985352, 88.968796)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.170214, 2.9985352, 88.968796)
 shape = SubResource("BoxShape3D_7yui6")
 
 [node name="Falling Tree 2" type="StaticBody3D" parent="Ground/NavigationRegion3D"]

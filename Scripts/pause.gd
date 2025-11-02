@@ -1,4 +1,6 @@
 extends CanvasLayer
+@onready var pause = $"."
+@onready var hud = $"../HUD"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -8,3 +10,21 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+	
+func _on_resume_pressed() -> void:
+	pause.visible = false
+	State.paused = false
+	hud.visible = true
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+func _on_options_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_menu_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+
+
+func _on_exit_pressed() -> void:
+	get_tree().quit()

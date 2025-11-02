@@ -11,7 +11,6 @@ func _on_door_entry_body_entered(body: Node3D) -> void:
 	if body.has_method("player"):
 		entered = true
 
-
 func _on_door_entry_body_exited(body: Node3D) -> void:
 	if body.has_method("player"):
 		entered = false

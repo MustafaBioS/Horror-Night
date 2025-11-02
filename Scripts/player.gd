@@ -18,7 +18,7 @@ func _ready() -> void:
 	hud.visible = true
 	
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("pause") and State.in_dial == false and State.in_scene == false:
 		if State.paused == false:
 			pause.visible = true
 			State.paused = true
@@ -33,32 +33,34 @@ func _process(delta: float) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			sensitivity = 0.003
 
+	if State.paused == false:
+		sensitivity = 0.003
+	
+	elif State.paused == true:
+		sensitivity = 0
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and State.paused == false:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and State.in_dial == false and State.in_scene == false:
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and State.in_dial == false and State.in_scene == false and State.paused == false:
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("a", "d", "w", "s")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction and State.in_dial == false and State.in_scene == false:
+	if direction and State.in_dial == false and State.in_scene == false and State.paused == false:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
-		if State.in_dial == false and State.in_scene == false:
+		if State.in_dial == false and State.in_scene == false and State.paused == false:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
 		
-	if Input.is_action_pressed("exit"):
-		get_tree().quit()
-		
-	if State.in_dial == false and State.in_scene == false:
+	if State.in_dial == false and State.in_scene == false and State.paused == false:
 		move_and_slide()
 
 func _unhandled_input(event):
