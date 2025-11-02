@@ -2,5 +2,6 @@
 set State.in_dial = true
 set State.sec_dial_done = true
 You: Well that's just great...
+You: I'll just go to the house instead.
 set State.in_dial = false
 => END

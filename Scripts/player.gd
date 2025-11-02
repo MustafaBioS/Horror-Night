@@ -1,6 +1,8 @@
 extends CharacterBody3D
 
 @onready var camera = $Camera3D
+@onready var pause = $"../Pause"
+@onready var hud = $"../HUD"
 
 const SPEED = 15.0
 const JUMP_VELOCITY = 6.0
@@ -11,6 +13,26 @@ func player():
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	pause.visible = false
+	State.paused = false
+	hud.visible = true
+	
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		if State.paused == false:
+			pause.visible = true
+			State.paused = true
+			hud.visible = false
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			sensitivity = 0
+			
+		elif State.paused == true:
+			pause.visible = false
+			State.paused = false
+			hud.visible = true
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			sensitivity = 0.003
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

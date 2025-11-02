@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://btxogjgmos46u"]
+[gd_scene load_steps=44 format=3 uid="uid://btxogjgmos46u"]
 
 [ext_resource type="Texture2D" uid="uid://c8wun3nbwcrvt" path="res://Assets/wall/textures/concrete_slab_wall_diff_4k.jpg" id="1_7yui6"]
 [ext_resource type="Texture2D" uid="uid://fq8w3o2sm1ug" path="res://Assets/Stone/PavingStones111_2K-JPG_Color.jpg" id="2_5a7ea"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://bf3qyr3q7yu5s" path="res://Scripts/player.gd" id="9_ikia7"]
 [ext_resource type="Resource" uid="uid://cx6o8wfo8ewbo" path="res://Dialogues/start.dialogue" id="10_0fj1v"]
 [ext_resource type="Script" uid="uid://cj64mu7ux6bui" path="res://Scripts/hud.gd" id="12_7yui6"]
+[ext_resource type="FontFile" uid="uid://dq1sidubjd4fq" path="res://Fons/Karina.ttf" id="14_e0ngr"]
+[ext_resource type="Script" uid="uid://bkr3gpw7d5qvo" path="res://Scripts/pause.gd" id="14_kn0ld"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5a7ea"]
 albedo_color = Color(0.023442816, 0.3459306, 0, 1)
@@ -32,12 +34,9 @@ uv1_scale = Vector3(15, 15, 15)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kn0ld"]
 albedo_texture = ExtResource("2_c5t2i")
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7yui6"]
-load_path = "res://.godot/imported/Poliigon_PlasterPainted_7664_Preview1.png-89e1413f79e41cefb7fd7280e0af0200.s3tc.ctex"
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8j60k"]
-albedo_texture = SubResource("CompressedTexture2D_7yui6")
-uv1_scale = Vector3(2, 2, 2)
+albedo_texture = ExtResource("1_7yui6")
+uv1_scale = Vector3(15, 15, 15)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ukr8"]
 albedo_texture = ExtResource("2_5a7ea")
@@ -53,13 +52,13 @@ albedo_color = Color(0.87058824, 0.72156864, 0.5294118, 1)
 size = Vector3(2.054596, 13.651001, 1.5044498)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o06y3"]
-size = Vector3(10.028015, 10.447357, 9.475708)
+size = Vector3(10.028015, 10.447357, 4.5192184)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k7acu"]
 size = Vector3(10.094849, 10.374573, 2.0236816)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c5t2i"]
-size = Vector3(3.0453634, 6, 14.071014)
+size = Vector3(3.4196544, 6, 14.071014)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0fj1v"]
 radius = 0.77978516
@@ -202,6 +201,29 @@ size = Vector3(17.428467, 11.557831, 12.390381)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ikia7"]
 size = Vector3(14.610901, 6.1622314, 1.3496094)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0ngr"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kn0ld"]
+bg_color = Color(0.50928575, 0.50928634, 0.50928587, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hgpy0"]
+bg_color = Color(0.7539839, 0.75398386, 0.75398386, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t2t4p"]
 
 [node name="World" type="Node3D"]
 
@@ -810,7 +832,7 @@ transform = Transform3D(-6, 0, -4.371139e-07, 0, 5, 0, 5.2453663e-07, 0, -5, -2.
 [node name="DoorEntry" type="Area3D" parent="Ground/NavigationRegion3D/Door"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/NavigationRegion3D/Door/DoorEntry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007598877, 4.7236786, -28.47888)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007598877, 4.7236786, -30.957125)
 shape = SubResource("BoxShape3D_o06y3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/NavigationRegion3D/Door"]
@@ -823,7 +845,7 @@ script = ExtResource("7_ikia7")
 dialogue_resource = ExtResource("8_c5t2i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/NavigationRegion3D/SceneArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03818512, 3.4989998, 0.32276917)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22533035, 3.4989998, 0.32276917)
 shape = SubResource("BoxShape3D_c5t2i")
 
 [node name="Falling Tree" type="StaticBody3D" parent="Ground/NavigationRegion3D"]
@@ -944,6 +966,108 @@ theme_override_colors/font_color = Color(0.9524457, 0.9524458, 3.85046e-06, 1)
 theme_override_font_sizes/font_size = 22
 text = "Go to the garden."
 horizontal_alignment = 1
+
+[node name="Pause" type="CanvasLayer" parent="."]
+script = ExtResource("14_kn0ld")
+
+[node name="Background" type="Panel" parent="Pause"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="Pause"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -111.5
+offset_top = 108.0
+offset_right = 111.5
+offset_bottom = 171.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("14_e0ngr")
+theme_override_font_sizes/font_size = 65
+text = "Paused"
+
+[node name="ButtonCon" type="VBoxContainer" parent="Pause"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.5
+offset_top = -90.0
+offset_right = 108.5
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Play" type="Button" parent="Pause/ButtonCon"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_e0ngr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kn0ld")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hgpy0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t2t4p")
+text = "Resume"
+
+[node name="Options" type="Button" parent="Pause/ButtonCon"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_e0ngr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kn0ld")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hgpy0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t2t4p")
+text = "Options"
+
+[node name="Menu" type="Button" parent="Pause/ButtonCon"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_e0ngr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kn0ld")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hgpy0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t2t4p")
+text = "Main Menu"
+
+[node name="Exit" type="Button" parent="Pause/ButtonCon"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_e0ngr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kn0ld")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hgpy0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t2t4p")
+text = "Exit"
 
 [connection signal="body_entered" from="Ground/NavigationRegion3D/Door/DoorEntry" to="Ground/NavigationRegion3D/Door" method="_on_door_entry_body_entered"]
 [connection signal="body_exited" from="Ground/NavigationRegion3D/Door/DoorEntry" to="Ground/NavigationRegion3D/Door" method="_on_door_entry_body_exited"]
