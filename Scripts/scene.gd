@@ -5,7 +5,9 @@ extends Area3D
 @onready var temp = $"../../../TempCollision"
 @export var dialogue_resource: DialogueResource
 @export var dialogue_start: String = "start"
+@onready var tree = $"../../../TreeSFX"
 const Balloon = preload("uid://ckd6gefq02cv6")
+
 
 func action() -> void:
 	if State.sec_dial_done == false:
@@ -16,8 +18,8 @@ func action() -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if body.has_method("player"):
 		if State.first_scene_done == false:
+			tree.play()
 			State.in_scene = true
-			
 			anim1.play("fall")
 			anim2.play("fall2")
 			

@@ -10,7 +10,7 @@ size = Vector3(2.7598147, 6.678899, 2.3849487)
 radius = 5.38916
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1f0kj"]
-radius = 15.245117
+radius = 28.449219
 
 [node name="Enemy" type="CharacterBody3D"]
 script = ExtResource("1_1f0kj")
@@ -31,3 +31,10 @@ shape = SubResource("CylinderShape3D_hghv2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Chase"]
 shape = SubResource("CylinderShape3D_1f0kj")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[connection signal="body_entered" from="Attack" to="." method="_on_attack_body_entered"]
+[connection signal="body_exited" from="Attack" to="." method="_on_attack_body_exited"]
+[connection signal="body_entered" from="Chase" to="." method="_on_chase_body_entered"]
+[connection signal="body_exited" from="Chase" to="." method="_on_chase_body_exited"]

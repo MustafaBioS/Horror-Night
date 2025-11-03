@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://btxogjgmos46u"]
+[gd_scene load_steps=59 format=3 uid="uid://btxogjgmos46u"]
 
 [ext_resource type="Texture2D" uid="uid://c8wun3nbwcrvt" path="res://Assets/wall/textures/concrete_slab_wall_diff_4k.jpg" id="1_7yui6"]
 [ext_resource type="Texture2D" uid="uid://fq8w3o2sm1ug" path="res://Assets/Stone/PavingStones111_2K-JPG_Color.jpg" id="2_5a7ea"]
@@ -15,6 +15,10 @@
 [ext_resource type="Script" uid="uid://cj64mu7ux6bui" path="res://Scripts/hud.gd" id="12_7yui6"]
 [ext_resource type="FontFile" uid="uid://dq1sidubjd4fq" path="res://Fons/Karina.ttf" id="14_e0ngr"]
 [ext_resource type="Script" uid="uid://bkr3gpw7d5qvo" path="res://Scripts/pause.gd" id="14_kn0ld"]
+[ext_resource type="Script" uid="uid://bned1d0n5y243" path="res://Scripts/audio.gd" id="16_axeuq"]
+[ext_resource type="AudioStream" uid="uid://yoswj0wymhm2" path="res://Sounds/falling-tree-356127.mp3" id="16_hgpy0"]
+[ext_resource type="Script" uid="uid://xtch4c2glp8s" path="res://Scripts/fullscreen.gd" id="17_1cojt"]
+[ext_resource type="AudioStream" uid="uid://cbeh4fvg28au4" path="res://Sounds/horror-playhouse-404813.mp3" id="17_t2t4p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5a7ea"]
 albedo_color = Color(0.023442816, 0.3459306, 0, 1)
@@ -224,6 +228,76 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t2t4p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yq1aw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pyn1s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_no8kt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xbk3s"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_i4fjy"]
+color = Color(1, 1, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_pt3ps"]
+color = Color(0.39545888, 0.58338565, 0.9942265, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hmc15"]
+
+[sub_resource type="Animation" id="Animation_axeuq"]
+resource_name = "FadeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1cojt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yq1aw"]
+resource_name = "FadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yq1aw"]
+_data = {
+&"FadeIn": SubResource("Animation_axeuq"),
+&"FadeOut": SubResource("Animation_yq1aw"),
+&"RESET": SubResource("Animation_1cojt")
+}
 
 [node name="World" type="Node3D"]
 
@@ -1069,6 +1143,168 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_hgpy0")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_t2t4p")
 text = "Exit"
 
+[node name="Options" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="Options"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -433.5
+offset_top = -262.0625
+offset_right = 433.5
+offset_bottom = 262.0625
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Options"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -111.5
+offset_top = 108.0
+offset_right = 111.5
+offset_bottom = 171.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("14_e0ngr")
+theme_override_font_sizes/font_size = 65
+text = "Options"
+
+[node name="Back" type="Button" parent="Options"]
+offset_left = 162.0
+offset_top = 82.0
+offset_right = 322.0
+offset_bottom = 185.0
+theme_override_font_sizes/font_size = 75
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yq1aw")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pyn1s")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_no8kt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xbk3s")
+text = "←"
+
+[node name="MasterSlider" type="HSlider" parent="Options"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -286.0
+offset_top = -119.0
+offset_right = 289.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_i4fjy")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_pt3ps")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_pt3ps")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("16_axeuq")
+audio_bus_name = "Master"
+
+[node name="MusicSlider" type="HSlider" parent="Options"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -287.5
+offset_top = -36.0
+offset_right = 287.5
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_i4fjy")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_pt3ps")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_pt3ps")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("16_axeuq")
+audio_bus_name = "Music"
+
+[node name="SFXSlider" type="HSlider" parent="Options"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -286.0
+offset_top = 50.0
+offset_right = 289.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_i4fjy")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_pt3ps")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_pt3ps")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("16_axeuq")
+audio_bus_name = "SFX"
+
+[node name="MasterLB" type="Label" parent="Options"]
+offset_left = 289.0
+offset_top = 172.0
+offset_right = 452.0
+offset_bottom = 208.0
+theme_override_font_sizes/font_size = 25
+text = "Master"
+
+[node name="MusicLB" type="Label" parent="Options"]
+offset_left = 291.0
+offset_top = 254.0
+offset_right = 361.0
+offset_bottom = 290.0
+theme_override_font_sizes/font_size = 25
+text = "Music"
+
+[node name="SFXLB" type="Label" parent="Options"]
+offset_left = 294.0
+offset_top = 342.0
+offset_right = 457.0
+offset_bottom = 378.0
+theme_override_font_sizes/font_size = 25
+text = "Sound Effects"
+
+[node name="Fullscreen" type="CheckButton" parent="Options"]
+offset_left = 282.0
+offset_top = 411.0
+offset_right = 685.3334
+offset_bottom = 477.0
+scale = Vector2(1.5, 1.5)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hmc15")
+text = "Fullscreen"
+script = ExtResource("17_1cojt")
+
+[node name="Fade" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Fade"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fade"]
+libraries = {
+&"": SubResource("AnimationLibrary_yq1aw")
+}
+
+[node name="TreeSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_hgpy0")
+bus = &"SFX"
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_t2t4p")
+autoplay = true
+bus = &"Music"
+
 [connection signal="body_entered" from="Ground/NavigationRegion3D/Door/DoorEntry" to="Ground/NavigationRegion3D/Door" method="_on_door_entry_body_entered"]
 [connection signal="body_exited" from="Ground/NavigationRegion3D/Door/DoorEntry" to="Ground/NavigationRegion3D/Door" method="_on_door_entry_body_exited"]
 [connection signal="body_entered" from="Ground/NavigationRegion3D/SceneArea" to="Ground/NavigationRegion3D/SceneArea" method="_on_body_entered"]
@@ -1077,3 +1313,8 @@ text = "Exit"
 [connection signal="pressed" from="Pause/ButtonCon/Options" to="Pause" method="_on_options_pressed"]
 [connection signal="pressed" from="Pause/ButtonCon/Menu" to="Pause" method="_on_menu_pressed"]
 [connection signal="pressed" from="Pause/ButtonCon/Exit" to="Pause" method="_on_exit_pressed"]
+[connection signal="pressed" from="Options/Back" to="Pause" method="_on_back_pressed"]
+[connection signal="value_changed" from="Options/MasterSlider" to="Options/MasterSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="Options/MusicSlider" to="Options/MusicSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="Options/SFXSlider" to="Options/SFXSlider" method="_on_value_changed"]
+[connection signal="toggled" from="Options/Fullscreen" to="Options/Fullscreen" method="_on_toggled"]

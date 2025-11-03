@@ -1,8 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://q241ibfylgww"]
+[gd_scene load_steps=23 format=3 uid="uid://q241ibfylgww"]
 
 [ext_resource type="FontFile" uid="uid://dq1sidubjd4fq" path="res://Fons/Karina.ttf" id="1_1rerr"]
 [ext_resource type="Script" uid="uid://dmnfqnb75qye1" path="res://Scripts/menu.gd" id="1_xhh6f"]
 [ext_resource type="Texture2D" uid="uid://bed7e20ccm13i" path="res://Assets/image (3).png" id="2_cayip"]
+[ext_resource type="AudioStream" uid="uid://cbeh4fvg28au4" path="res://Sounds/horror-playhouse-404813.mp3" id="4_158mb"]
+[ext_resource type="Script" uid="uid://bned1d0n5y243" path="res://Scripts/audio.gd" id="4_wwsa2"]
+[ext_resource type="Script" uid="uid://xtch4c2glp8s" path="res://Scripts/fullscreen.gd" id="5_jsrd8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_158mb"]
 texture = ExtResource("2_cayip")
@@ -29,6 +32,76 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1rerr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cayip"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_158mb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wwsa2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jsrd8"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_158mb"]
+color = Color(1, 1, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_wwsa2"]
+color = Color(0.39545888, 0.58338565, 0.9942265, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wbdvm"]
+
+[sub_resource type="Animation" id="Animation_jsrd8"]
+resource_name = "FadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wbdvm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_q3rjx"]
+resource_name = "FadeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wbdvm"]
+_data = {
+&"FadeIn": SubResource("Animation_q3rjx"),
+&"FadeOut": SubResource("Animation_jsrd8"),
+&"RESET": SubResource("Animation_wbdvm")
+}
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -125,6 +198,170 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_xhh6f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1rerr")
 text = "Exit"
 
+[node name="Options" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="Options"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -433.5
+offset_top = -262.0625
+offset_right = 433.5
+offset_bottom = 262.0625
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Options"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -111.5
+offset_top = 108.0
+offset_right = 111.5
+offset_bottom = 171.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_1rerr")
+theme_override_font_sizes/font_size = 65
+text = "Options"
+
+[node name="Back" type="Button" parent="Options"]
+offset_left = 162.0
+offset_top = 82.0
+offset_right = 322.0
+offset_bottom = 185.0
+theme_override_font_sizes/font_size = 75
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cayip")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_158mb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wwsa2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jsrd8")
+text = "←"
+
+[node name="MasterSlider" type="HSlider" parent="Options"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -286.0
+offset_top = -119.0
+offset_right = 289.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_158mb")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_wwsa2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_wwsa2")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("4_wwsa2")
+audio_bus_name = "Master"
+
+[node name="MusicSlider" type="HSlider" parent="Options"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -287.5
+offset_top = -36.0
+offset_right = 287.5
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_158mb")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_wwsa2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_wwsa2")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("4_wwsa2")
+audio_bus_name = "Music"
+
+[node name="SFXSlider" type="HSlider" parent="Options"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -286.0
+offset_top = 50.0
+offset_right = 289.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_158mb")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_wwsa2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_wwsa2")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("4_wwsa2")
+audio_bus_name = "SFX"
+
+[node name="MasterLB" type="Label" parent="Options"]
+offset_left = 289.0
+offset_top = 172.0
+offset_right = 452.0
+offset_bottom = 208.0
+theme_override_font_sizes/font_size = 25
+text = "Master"
+
+[node name="MusicLB" type="Label" parent="Options"]
+offset_left = 291.0
+offset_top = 254.0
+offset_right = 361.0
+offset_bottom = 290.0
+theme_override_font_sizes/font_size = 25
+text = "Music"
+
+[node name="SFXLB" type="Label" parent="Options"]
+offset_left = 294.0
+offset_top = 342.0
+offset_right = 457.0
+offset_bottom = 378.0
+theme_override_font_sizes/font_size = 25
+text = "Sound Effects"
+
+[node name="Fullscreen" type="CheckButton" parent="Options"]
+offset_left = 282.0
+offset_top = 411.0
+offset_right = 685.3334
+offset_bottom = 477.0
+scale = Vector2(1.5, 1.5)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wbdvm")
+text = "Fullscreen"
+script = ExtResource("5_jsrd8")
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_158mb")
+autoplay = true
+bus = &"Music"
+
+[node name="Fade" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Fade"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fade"]
+libraries = {
+&"": SubResource("AnimationLibrary_wbdvm")
+}
+
 [connection signal="pressed" from="ButtonCon/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="ButtonCon/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="ButtonCon/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Options/Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="Options/MasterSlider" to="Options/MasterSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="Options/MusicSlider" to="Options/MusicSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="Options/SFXSlider" to="Options/SFXSlider" method="_on_value_changed"]
+[connection signal="toggled" from="Options/Fullscreen" to="Options/Fullscreen" method="_on_toggled"]
