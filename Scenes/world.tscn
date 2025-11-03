@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://btxogjgmos46u"]
+[gd_scene load_steps=60 format=3 uid="uid://btxogjgmos46u"]
 
 [ext_resource type="Texture2D" uid="uid://c8wun3nbwcrvt" path="res://Assets/wall/textures/concrete_slab_wall_diff_4k.jpg" id="1_7yui6"]
 [ext_resource type="Texture2D" uid="uid://fq8w3o2sm1ug" path="res://Assets/Stone/PavingStones111_2K-JPG_Color.jpg" id="2_5a7ea"]
@@ -13,12 +13,13 @@
 [ext_resource type="Script" uid="uid://bf3qyr3q7yu5s" path="res://Scripts/player.gd" id="9_ikia7"]
 [ext_resource type="Resource" uid="uid://cx6o8wfo8ewbo" path="res://Dialogues/start.dialogue" id="10_0fj1v"]
 [ext_resource type="Script" uid="uid://cj64mu7ux6bui" path="res://Scripts/hud.gd" id="12_7yui6"]
-[ext_resource type="FontFile" uid="uid://dq1sidubjd4fq" path="res://Fons/Karina.ttf" id="14_e0ngr"]
+[ext_resource type="FontFile" path="res://Fons/Karina.ttf" id="14_e0ngr"]
 [ext_resource type="Script" uid="uid://bkr3gpw7d5qvo" path="res://Scripts/pause.gd" id="14_kn0ld"]
 [ext_resource type="Script" uid="uid://bned1d0n5y243" path="res://Scripts/audio.gd" id="16_axeuq"]
 [ext_resource type="AudioStream" uid="uid://yoswj0wymhm2" path="res://Sounds/falling-tree-356127.mp3" id="16_hgpy0"]
 [ext_resource type="Script" uid="uid://xtch4c2glp8s" path="res://Scripts/fullscreen.gd" id="17_1cojt"]
 [ext_resource type="AudioStream" uid="uid://cbeh4fvg28au4" path="res://Sounds/horror-playhouse-404813.mp3" id="17_t2t4p"]
+[ext_resource type="FontFile" uid="uid://djlovbiqi70uf" path="res://Fonts/BLOODY.TTF" id="20_1cojt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5a7ea"]
 albedo_color = Color(0.023442816, 0.3459306, 0, 1)
@@ -712,7 +713,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.34721, 0.4037285, 130.355
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.113556, 0.4037323, 139.35995)
 
 [node name="Trees103" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.216373, 0.4037285, 147.87372)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.756775, 0.4037285, 165.81232)
 
 [node name="Trees104" parent="Ground/NavigationRegion3D/Trees" instance=ExtResource("5_fo5ed")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.85259, 0.4037285, 138.21004)
@@ -1295,6 +1296,33 @@ color = Color(0, 0, 0, 1)
 libraries = {
 &"": SubResource("AnimationLibrary_yq1aw")
 }
+
+[node name="Died" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Died"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Died" type="Label" parent="Died"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -268.0
+offset_top = -82.5
+offset_right = 268.0
+offset_bottom = 82.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.6708938, 0, 0.06367412, 1)
+theme_override_fonts/font = ExtResource("20_1cojt")
+theme_override_font_sizes/font_size = 150
+text = "You Died"
 
 [node name="TreeSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_hgpy0")

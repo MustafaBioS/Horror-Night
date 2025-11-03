@@ -10,7 +10,8 @@ size = Vector3(2.7598147, 6.678899, 2.3849487)
 radius = 5.38916
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1f0kj"]
-radius = 28.449219
+height = 3.7631836
+radius = 201.81104
 
 [node name="Enemy" type="CharacterBody3D"]
 script = ExtResource("1_1f0kj")

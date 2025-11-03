@@ -1,11 +1,12 @@
 extends CharacterBody3D
 @onready var nav = $NavigationAgent3D
+@onready var scream = $"../Scream"
 
 enum States {attack, idle, chase, die}
 
 var state = States.idle
 var hp = 100
-var speed = 12.5
+var speed = 25.0
 var accel = 10.0
 var gravity = 9.8
 var target = null
@@ -43,17 +44,22 @@ func _physics_process(delta: float) -> void:
 func _on_attack_body_entered(body: Node3D) -> void:
 	if body.has_method("player"):
 		state = States.attack
+		scream.stop()
+		State.died = true
 
 func _on_attack_body_exited(body: Node3D) -> void:
 	if body.has_method("player"):
 		state = States.chase
+		scream.play()
 
 func _on_chase_body_entered(body: Node3D) -> void:
 	if body.has_method("player"):
 		target = body
+		scream.play()
 		state = States.chase
 	
 func _on_chase_body_exited(body: Node3D) -> void:
 	if body.has_method("player"):
 		target = null
+		scream.stop()
 		state = States.idle

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://ben5uu8hidxjq"]
+[gd_scene load_steps=43 format=3 uid="uid://ben5uu8hidxjq"]
 
 [ext_resource type="Texture2D" uid="uid://ddk537nxfw3q0" path="res://Assets/Walls/WoodFloor040_1K-JPG_Color.jpg" id="1_okrnj"]
 [ext_resource type="Texture2D" uid="uid://b20f5yamx7vdm" path="res://Assets/wall/textures/concrete_slab_wall_disp_4k.png" id="2_n87ef"]
@@ -7,10 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://kmwf6xffbx0h" path="res://Scenes/enemy.tscn" id="5_xi0mm"]
 [ext_resource type="Script" uid="uid://cj64mu7ux6bui" path="res://Scripts/hud.gd" id="6_bu6dc"]
 [ext_resource type="Script" uid="uid://bkr3gpw7d5qvo" path="res://Scripts/pause.gd" id="7_gau5j"]
-[ext_resource type="FontFile" uid="uid://dq1sidubjd4fq" path="res://Fons/Karina.ttf" id="8_7ug6d"]
+[ext_resource type="FontFile" path="res://Fons/Karina.ttf" id="8_7ug6d"]
 [ext_resource type="AudioStream" uid="uid://cbeh4fvg28au4" path="res://Sounds/horror-playhouse-404813.mp3" id="9_7ug6d"]
 [ext_resource type="Script" uid="uid://bned1d0n5y243" path="res://Scripts/audio.gd" id="9_x4svt"]
 [ext_resource type="Script" uid="uid://xtch4c2glp8s" path="res://Scripts/fullscreen.gd" id="10_ttg8n"]
+[ext_resource type="AudioStream" uid="uid://bxqf7afl06hn5" path="res://Sounds/sirenhead-death-sound-60495.mp3" id="12_ttg8n"]
+[ext_resource type="FontFile" uid="uid://djlovbiqi70uf" path="res://Fonts/BLOODY.TTF" id="13_0h1dt"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_gau5j"]
 vertices = PackedVector3Array(-46.664063, 31.212708, -37.367516, -46.664063, 31.212708, 37.132484, 27.585938, 31.212708, 37.132484, 27.585938, 31.212708, -37.367516, 26.335938, 0.9627075, 35.882484, 26.335938, 0.9627075, 6.6324844, 25.585938, 0.9627075, 6.3824844, -11.1640625, 0.9627075, 29.382484, -11.1640625, 0.9627075, 35.882484, -45.414063, 0.9627075, 35.882484, -15.1640625, 0.9627075, 35.882484, -14.9140625, 0.9627075, 29.132484, 25.585938, 0.9627075, -4.1175156, 26.335938, 0.9627075, -4.3675156, 26.335938, 0.9627075, -36.117516, -45.414063, 0.9627075, -36.117516, 21.585938, 15.7127075, 28.132484, 21.835938, 15.7127075, 35.882484, 26.335938, 15.7127075, 35.882484, 26.335938, 15.7127075, -36.117516, -45.414063, 15.7127075, 35.882484, -1.9140625, 15.7127075, 35.882484, -1.6640625, 15.7127075, 28.132484, -45.414063, 15.7127075, -36.117516, 0.3359375, 8.4627075, 29.632484, 0.3359375, 8.4627075, 35.882484, 2.3359375, 8.4627075, 35.882484, 2.3359375, 8.4627075, 29.632484, 3.8359375, 9.9627075, 29.632484, 3.8359375, 9.9627075, 35.882484, 5.8359375, 9.9627075, 35.882484, 5.8359375, 9.9627075, 29.632484, 7.5859375, 10.9627075, 29.632484, 7.5859375, 10.9627075, 35.882484, 9.5859375, 10.9627075, 35.882484, 9.5859375, 10.9627075, 29.632484, 11.3359375, 11.9627075, 29.882484, 11.3359375, 11.9627075, 35.882484, 13.3359375, 11.9627075, 35.882484, 13.3359375, 11.9627075, 29.882484, 14.8359375, 13.4627075, 29.882484, 14.8359375, 13.4627075, 35.632484, 16.835938, 13.4627075, 35.632484, 16.835938, 13.4627075, 29.882484, 18.585938, 14.4627075, 29.882484, 18.585938, 14.4627075, 35.632484, 20.585938, 14.4627075, 35.632484, 20.585938, 14.4627075, 29.882484, -14.1640625, 3.2127075, 30.132484, -14.1640625, 3.2127075, 35.882484, -12.1640625, 3.2127075, 35.882484, -12.1640625, 3.2127075, 30.132484, -10.4140625, 4.7127075, 30.132484, -10.4140625, 4.7127075, 35.882484, -8.4140625, 4.7127075, 35.882484, -8.4140625, 4.7127075, 30.132484, -6.9140625, 5.7127075, 30.132484, -6.9140625, 5.7127075, 35.882484, -4.6640625, 5.7127075, 35.882484, -4.6640625, 5.7127075, 30.132484, -3.1640625, 6.9627075, 30.132484, -3.1640625, 6.9627075, 35.882484, -1.1640625, 6.9627075, 35.882484, -1.1640625, 6.9627075, 30.132484)
@@ -134,9 +136,25 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_yq1aw"]
+resource_name = "FadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yq1aw"]
 _data = {
 &"FadeIn": SubResource("Animation_axeuq"),
+&"FadeOut": SubResource("Animation_yq1aw"),
 &"RESET": SubResource("Animation_1cojt")
 }
 
@@ -359,7 +377,7 @@ shape = SubResource("BoxShape3D_iqtyj")
 environment = SubResource("Environment_iqtyj")
 
 [node name="Enemy" parent="." instance=ExtResource("5_xi0mm")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -38.839096, 15.360176, 2.7709856)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -37.46058, 0.8688431, 2.7709856)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("6_bu6dc")
@@ -656,6 +674,37 @@ omni_range = 878.099
 stream = ExtResource("9_7ug6d")
 autoplay = true
 bus = &"Music"
+
+[node name="Scream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_ttg8n")
+bus = &"SFX"
+
+[node name="Died" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Died"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Died" type="Label" parent="Died"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -268.0
+offset_top = -82.5
+offset_right = 268.0
+offset_bottom = 82.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.6708938, 0, 0.06367412, 1)
+theme_override_fonts/font = ExtResource("13_0h1dt")
+theme_override_font_sizes/font_size = 150
+text = "You Died"
 
 [connection signal="pressed" from="Pause/ButtonCon/Resume" to="Pause" method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause/ButtonCon/Options" to="Pause" method="_on_options_pressed"]

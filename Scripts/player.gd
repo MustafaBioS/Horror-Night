@@ -4,6 +4,7 @@ extends CharacterBody3D
 @onready var pause = $"../Pause"
 @onready var hud = $"../HUD"
 @onready var anim = $"../Fade/AnimationPlayer"
+@onready var died = $"../Died"
 
 const SPEED = 15.0
 const JUMP_VELOCITY = 6.0
@@ -16,9 +17,11 @@ func _ready() -> void:
 	State.paused = false
 	pause.visible = false
 	hud.visible = true
+	died.visible = false
 	anim.play("FadeIn")
 	await anim.animation_finished
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 
 	
 func _process(delta: float) -> void:
@@ -42,7 +45,15 @@ func _process(delta: float) -> void:
 	
 	elif State.paused == true and State.options == false:
 		sensitivity = 0
-
+	
+	if State.died == true:
+		died.visible = true
+		await get_tree().create_timer(1.5).timeout
+		anim.play("FadeOut")
+		get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+	elif State.died == false:
+		died.visible = false
+	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor() and State.paused == false:

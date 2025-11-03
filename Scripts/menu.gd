@@ -6,11 +6,21 @@ extends Control
 
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	options.visible = false
 	btns.visible = true
 	title.visible = true
+	State.in_dial = false
+	State.first_dial_done = false
+	State.in_scene = false
+	State.first_scene_done = false
+	State.objective = "Go to the garden"
+	State.sec_dial_done = false
+	State.paused = false
+	State.options = false
+	State.died = false
 	anim.play("FadeIn")
-
+	await anim.animation_finished
 	
 func _process(delta: float) -> void:
 	if State.options == true:
@@ -22,7 +32,7 @@ func _process(delta: float) -> void:
 
 func _on_play_pressed() -> void:
 	anim.play("FadeOut")
-	await anim.animation_finished
+	await get_tree().create_timer(2.0).timeout
 	get_tree().change_scene_to_file("res://Scenes/world.tscn")
 
 

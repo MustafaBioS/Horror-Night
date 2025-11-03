@@ -7,3 +7,4 @@ var objective = "Go to the garden"
 var sec_dial_done = false
 var paused = false
 var options = false
+var died = false

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dq1sidubjd4fq"
-path="res://.godot/imported/Karina.ttf-5688b91b8683544d70d6af0ee250fd1c.fontdata"
+path="res://.godot/imported/Karina.ttf-462742dec98e48c027879afc1d864f45.fontdata"
 
 [deps]
 
-source_file="res://Fons/Karina.ttf"
-dest_files=["res://.godot/imported/Karina.ttf-5688b91b8683544d70d6af0ee250fd1c.fontdata"]
+source_file="res://Fonts/Karina.ttf"
+dest_files=["res://.godot/imported/Karina.ttf-462742dec98e48c027879afc1d864f45.fontdata"]
 
 [params]
 

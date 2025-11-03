@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://q241ibfylgww"]
 
-[ext_resource type="FontFile" uid="uid://dq1sidubjd4fq" path="res://Fons/Karina.ttf" id="1_1rerr"]
+[ext_resource type="FontFile" path="res://Fons/Karina.ttf" id="1_1rerr"]
 [ext_resource type="Script" uid="uid://dmnfqnb75qye1" path="res://Scripts/menu.gd" id="1_xhh6f"]
 [ext_resource type="Texture2D" uid="uid://bed7e20ccm13i" path="res://Assets/image (3).png" id="2_cayip"]
 [ext_resource type="AudioStream" uid="uid://cbeh4fvg28au4" path="res://Sounds/horror-playhouse-404813.mp3" id="4_158mb"]
