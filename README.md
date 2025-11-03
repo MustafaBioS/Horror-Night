@@ -10,9 +10,11 @@ Then you end up in this haunted house where your wife apparently is.**
 > **E -> Interact**<br>
 > **ESC/P -> Pause**<br>
 > **ESC -> Back**<br>
+
 **<h1>Notes</h1>**
 **I was unable to complete this game as i've been busy with school so i might
 continue it next week hopefully, Also for some reason my environment wouldn't
 work when i exported the game but it looks much better in godot i don't really
 know why it did that when i exported it.**
+
 
